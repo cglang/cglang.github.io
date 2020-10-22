@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"cglang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="小功能">
+  <meta name="description" content="个人收藏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C# Image 对象与 Base64 字符串互相转换">
-<meta property="og:url" content="https://cglang.github.io/2020/10/22/2020-10-22@a4a3c125-7ff7-43f4-987a-44c9257b93b1/index.html">
+<meta property="og:title" content="收藏的但不用的网站">
+<meta property="og:url" content="https://cglang.github.io/2020/10/24/2020-10-24@08057fdc-6b48-4ca5-beb0-fbcbd205b0ab/index.html">
 <meta property="og:site_name" content="CGLang">
-<meta property="og:description" content="小功能">
+<meta property="og:description" content="个人收藏">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-22T12:57:07.000Z">
-<meta property="article:modified_time" content="2020-10-22T13:49:15.278Z">
+<meta property="article:published_time" content="2020-10-24T13:32:09.000Z">
+<meta property="article:modified_time" content="2020-10-22T13:48:56.342Z">
 <meta property="article:author" content="CGLang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://cglang.github.io/2020/10/22/2020-10-22@a4a3c125-7ff7-43f4-987a-44c9257b93b1/">
+<link rel="canonical" href="https://cglang.github.io/2020/10/24/2020-10-24@08057fdc-6b48-4ca5-beb0-fbcbd205b0ab/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>C# Image 对象与 Base64 字符串互相转换 | CGLang</title>
+  <title>收藏的但不用的网站 | CGLang</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/22/2020-10-22@a4a3c125-7ff7-43f4-987a-44c9257b93b1/">
+    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/24/2020-10-24@08057fdc-6b48-4ca5-beb0-fbcbd205b0ab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C# Image 对象与 Base64 字符串互相转换
+          收藏的但不用的网站
         </h1>
 
         <div class="post-meta">
@@ -172,13 +172,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-22 20:57:07 / 修改时间：21:49:15" itemprop="dateCreated datePublished" datetime="2020-10-22T20:57:07+08:00">2020-10-22</time>
+              <time title="创建时间：2020-10-24 21:32:09" itemprop="dateCreated datePublished" datetime="2020-10-24T21:32:09+08:00">2020-10-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-22 21:48:56" itemprop="dateModified" datetime="2020-10-22T21:48:56+08:00">2020-10-22</time>
+              </span>
 
           
-            <div class="post-description">小功能</div>
+            <div class="post-description">个人收藏</div>
 
         </div>
       </header>
@@ -189,26 +195,109 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="转为Base64字符串"><a href="#转为Base64字符串" class="headerlink" title="转为Base64字符串"></a>转为Base64字符串</h2><h2 id="Base64-介绍"><a href="#Base64-介绍" class="headerlink" title="Base64 介绍"></a>Base64 介绍</h2><p>格式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:image&#x2F;jpeg;base64,&#x2F;9j&#x2F;4AAQSkZJRgABAQEBLAEsAAD&#x2F;2wB...</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>data:image/jpeg;<ul>
-<li>代表文本是一个图片的转码</li>
-</ul>
-</li>
-<li>base64,<ul>
-<li>代表这是base64的转码</li>
-</ul>
-</li>
-<li>base64,(注意逗号)之后的内容为图片 base64 转码后的文本</li>
-</ul>
-<h2 id="Image-对象转为-Base64-字符串"><a href="#Image-对象转为-Base64-字符串" class="headerlink" title="Image 对象转为 Base64 字符串"></a>Image 对象转为 Base64 字符串</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Image 转成 base64</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;fileFullName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">ImageToBase64</span>(<span class="params">Image img</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        MemoryStream mstream = <span class="keyword">new</span> MemoryStream();</span><br><span class="line">        img.Save(mstream, System.Drawing.Imaging.ImageFormat.Bmp); <span class="comment">// 这里可以指定Image对象图片的格式</span></span><br><span class="line">        <span class="keyword">byte</span>[] byData = <span class="keyword">new</span> Byte[mstream.Length];</span><br><span class="line">        mstream.Position = <span class="number">0</span>;</span><br><span class="line">        mstream.Read(byData, <span class="number">0</span>, byData.Length); mstream.Close();</span><br><span class="line">        <span class="keyword">return</span> Convert.ToBase64String(byData);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Base64-字符串转为-Image-对象"><a href="#Base64-字符串转为-Image-对象" class="headerlink" title="Base64 字符串转为 Image 对象"></a>Base64 字符串转为 Image 对象</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> base64 转 Image</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;base64&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Image <span class="title">Base64ToImage</span>(<span class="params"><span class="keyword">string</span> base64</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    base64 = base64</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/png;base64,&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/PNG;base64,&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/jgp;base64,&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/JPG;base64,&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/JPEG;base64,&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .Replace(<span class="string">&quot;data:image/jpeg;base64,&quot;</span>, <span class="string">&quot;&quot;</span>);<span class="comment">//将base64头部信息替换</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">byte</span>[] bytes = Convert.FromBase64String(base64);</span><br><span class="line">    MemoryStream memStream = <span class="keyword">new</span> MemoryStream(bytes);</span><br><span class="line">    <span class="keyword">return</span> Image.FromStream(memStream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h2 id="教程类"><a href="#教程类" class="headerlink" title="教程类"></a>教程类</h2><blockquote>
+<p>首推</p>
+</blockquote>
+<hr>
+<p><strong>名称</strong>：菜鸟教程</p>
+<p><strong>链接</strong>：<a href="">点我</a></p>
+<p><strong>特点</strong>：啥都有当做字典用，某个东西忘记了去这上面查查。</p>
+<hr>
+<p><strong>名称</strong>：易百教程</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.yiibai.com/">点我</a></p>
+<p><strong>特点</strong>：啥都有没事翻着玩</p>
+<hr>
+<p><strong>名称</strong>：MDN Web 文档</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/">点我</a></p>
+<p><strong>特点</strong>：Web 前端神器，Js/CSS/HTML 用来插复杂的操作，看 JavaScript 的函数，css属性用法等</p>
+<hr>
+<p><strong>名称</strong>：JDON</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.jdon.com/">点我</a></p>
+<p><strong>特点</strong>：解道，增加开发的知识储备，优秀的设计模式理解等</p>
+<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><p><strong>名称</strong>：Rust 程序设计语言 简体中文版</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://kaisery.github.io/trpl-zh-cn/title-page.html">点我</a></p>
+<p><strong>特点</strong>：</p>
+<hr>
+<p><strong>名称</strong>：Maven 权威指南</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://m.open-open.com/pdf/a3891b0f6db14a05b16d224eb50dcdee.html">点我</a></p>
+<p><strong>特点</strong>：</p>
+<h2 id="优秀的文档网站"><a href="#优秀的文档网站" class="headerlink" title="优秀的文档网站"></a>优秀的文档网站</h2><p><strong>名称</strong>：微软官方文档</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/">点我</a></p>
+<p><strong>特点</strong>：.NET 患者必备啊，翻就完了。</p>
+<hr>
+<p><strong>名称</strong>：Docs4dev</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.docs4dev.com/">点我</a></p>
+<p><strong>特点</strong>：搞 Java 的翻起来就是了</p>
+<h2 id="大佬的博客"><a href="#大佬的博客" class="headerlink" title="大佬的博客"></a>大佬的博客</h2><p><strong>名称</strong>：大佬一</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://pjf.name/">点我</a></p>
+<p><strong>特点</strong>：</p>
+<hr>
+<p><strong>名称</strong>：张子扬</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="http://www.tracefact.net/tech/">点我</a></p>
+<p><strong>特点</strong>：搞大数据的</p>
+<hr>
+<p><strong>名称</strong>：How2J</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://how2j.cn/">点我</a></p>
+<p><strong>特点</strong>：搞Java的，有很多简单的Java案例，非常适用于学习Java基础。</p>
+<h2 id="社区"><a href="#社区" class="headerlink" title="社区"></a>社区</h2><p><strong>名称</strong>：V2EX</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.v2ex.com/">点我</a></p>
+<p><strong>特点</strong>：</p>
+<hr>
+<p><strong>名称</strong>：InfoQ 中国</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.infoq.cn/">点我</a></p>
+<p><strong>特点</strong>：IT 资讯</p>
+<hr>
+<p><strong>名称</strong>：开源中国</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.oschina.net/">点我</a></p>
+<p><strong>特点</strong>：</p>
+<hr>
+<p><strong>名称</strong>：Stackoverflow</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://stackoverflow.com/">点我</a></p>
+<p><strong>特点</strong>：</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p><strong>名称</strong>：阿里巴巴镜像站</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/">点我</a></p>
+<p><strong>特点</strong>：</p>
+<hr>
+<p><strong>名称</strong>：Java 工程脚手架</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://start.aliyun.com/bootstrap.html">点我</a></p>
+<p><strong>特点</strong>：国内的速度快</p>
+<hr>
+<p><strong>名称</strong>：奶牛快传</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://cowtransfer.com/">点我</a></p>
+<p><strong>特点</strong>：免费的快传工具，相比于QQ普通用户一天只能传2G，这个则没限制。</p>
+<hr>
+<p><strong>名称</strong>：程序员的工具箱</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://tool.lu/">点我</a></p>
+<p><strong>特点</strong>：都是些小工具</p>
+<hr>
+<p><strong>名称</strong>：Ascii 文本生成</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="http://www.network-science.de/ascii/">点我</a></p>
+<p><strong>特点</strong>：用于生成可在控制台打印的文字字符画</p>
+<hr>
+<p><strong>名称</strong>：BootCDN</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://www.bootcdn.cn/">点我</a></p>
+<p><strong>特点</strong>：CDN加速嘛</p>
+<h2 id="查阅"><a href="#查阅" class="headerlink" title="查阅"></a>查阅</h2><p><strong>名称</strong>：Linuxize</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://linuxize.com/">点我</a></p>
+<p><strong>特点</strong>：用于查阅 Linux 当中的一些操作，比如安装某软件搭建某环境等。</p>
+<hr>
+<p><strong>名称</strong>：Emoji</p>
+<p><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://emojixd.com/">点我</a></p>
+<p><strong>特点</strong>：Emoji 表情啊</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong>名称</strong>.：</p>
+<p>码库CTOLib</p>
+<p>PHP中文网</p>
+<p>Rancher</p>
+<p>Html Agility pack</p>
+<p>AngleSharp</p>
+<p><a target="_blank" rel="noopener" href="http://www.apache.org/">Apache</a></p>
+<p>java的文档解析器 <a target="_blank" rel="noopener" href="https://jsoup.org/">https://jsoup.org/</a></p>
+<p>electron  <a target="_blank" rel="noopener" href="https://www.electronjs.org/">https://www.electronjs.org/</a></p>
+<p>家庭虚拟化 <a target="_blank" rel="noopener" href="https://www.proxmox.com/en/">https://www.proxmox.com/en/</a></p>
+<p>国产Web服务器 <a target="_blank" rel="noopener" href="https://www.jexus.org/">https://www.jexus.org/</a></p>
+<p>Hadoop <a target="_blank" rel="noopener" href="http://hadoop.apache.org/">http://hadoop.apache.org/</a></p>
+<p>UI框架</p>
+<p>vuetify ElementUI IView</p>
 
     </div>
 
@@ -224,13 +313,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/21/2020-10-21@8a0d3792-1217-4661-bfb4-45b6b2a273dc/" rel="prev" title="npm 环境依赖包的正确升级方法">
-      <i class="fa fa-chevron-left"></i> npm 环境依赖包的正确升级方法
+    <a href="/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/" rel="prev" title="Entity/Model/Dto等的区别">
+      <i class="fa fa-chevron-left"></i> Entity/Model/Dto等的区别
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/" rel="next" title="Entity/Model/Dto等的区别">
-      Entity/Model/Dto等的区别 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -289,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E4%B8%BABase64%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">转为Base64字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64-%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">Base64 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-%E5%AF%B9%E8%B1%A1%E8%BD%AC%E4%B8%BA-Base64-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">3.</span> <span class="nav-text">Image 对象转为 Base64 字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA-Image-%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">Base64 字符串转为 Image 对象</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%99%E7%A8%8B%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">教程类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A6%E7%B1%8D"><span class="nav-number">2.</span> <span class="nav-text">书籍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%A7%80%E7%9A%84%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99"><span class="nav-number">3.</span> <span class="nav-text">优秀的文档网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BD%AC%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">4.</span> <span class="nav-text">大佬的博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BE%E5%8C%BA"><span class="nav-number">5.</span> <span class="nav-text">社区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E9%98%85"><span class="nav-number">7.</span> <span class="nav-text">查阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
