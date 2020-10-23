@@ -22,19 +22,19 @@
     var CONFIG = {"hostname":"cglang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="突然想到怎么更新 Hexo 的版本然后查了查就找到了这篇文章，然后我就把他拔了下来，稍微记录一下。">
+  <meta name="description" content="一些概念而已">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm 环境依赖包的正确升级方法">
-<meta property="og:url" content="https://cglang.github.io/2020/10/21/2020-10-21@8a0d3792-1217-4661-bfb4-45b6b2a273dc/index.html">
+<meta property="og:title" content="Entity&#x2F;Model&#x2F;Dto等的区别">
+<meta property="og:url" content="https://cglang.github.io/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/index.html">
 <meta property="og:site_name" content="CGLang">
-<meta property="og:description" content="突然想到怎么更新 Hexo 的版本然后查了查就找到了这篇文章，然后我就把他拔了下来，稍微记录一下。">
+<meta property="og:description" content="一些概念而已">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-21T12:31:09.000Z">
-<meta property="article:modified_time" content="2020-10-22T14:51:34.623Z">
+<meta property="article:published_time" content="2020-10-23T13:13:28.000Z">
+<meta property="article:modified_time" content="2020-10-22T13:49:08.074Z">
 <meta property="article:author" content="CGLang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://cglang.github.io/2020/10/21/2020-10-21@8a0d3792-1217-4661-bfb4-45b6b2a273dc/">
+<link rel="canonical" href="https://cglang.github.io/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>npm 环境依赖包的正确升级方法 | CGLang</title>
+  <title>Entity/Model/Dto等的区别 | CGLang</title>
   
 
 
@@ -153,7 +153,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/21/2020-10-21@8a0d3792-1217-4661-bfb4-45b6b2a273dc/">
+    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -166,7 +166,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          npm 环境依赖包的正确升级方法
+          Entity/Model/Dto等的区别
         </h1>
 
         <div class="post-meta">
@@ -176,14 +176,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-21 20:31:09" itemprop="dateCreated datePublished" datetime="2020-10-21T20:31:09+08:00">2020-10-21</time>
+              <time title="创建时间：2020-10-23 21:13:28" itemprop="dateCreated datePublished" datetime="2020-10-23T21:13:28+08:00">2020-10-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 22:51:34" itemprop="dateModified" datetime="2020-10-22T22:51:34+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 21:49:08" itemprop="dateModified" datetime="2020-10-22T21:49:08+08:00">2020-10-22</time>
               </span>
 
           
@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">突然想到怎么更新 Hexo 的版本然后查了查就找到了这篇文章，然后我就把他拔了下来，稍微记录一下。</div>
+            <div class="post-description">一些概念而已</div>
 
         </div>
       </header>
@@ -205,24 +205,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="案例-更新HEXO环境依赖"><a href="#案例-更新HEXO环境依赖" class="headerlink" title="案例 更新HEXO环境依赖"></a>案例 更新HEXO环境依赖</h3><ol>
-<li>通过 Hexo-cli 工具的命令查看 Hexo 的版本</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo version</span></span><br></pre></td></tr></table></figure>
-
-<p>显示如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo version</span></span><br><span class="line">INFO  Validating config</span><br><span class="line">hexo: 5.2.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Linux 4.19.104-microsoft-standard linux x64</span><br><span class="line">node: 14.5.0</span><br><span class="line">v8: 8.3.110.9-node.23</span><br><span class="line">uv: 1.38.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.7</span><br><span class="line">ares: 1.16.0</span><br><span class="line">modules: 83</span><br><span class="line">nghttp2: 1.41.0</span><br><span class="line">napi: 6</span><br><span class="line">llhttp: 2.0.4</span><br><span class="line">openssl: 1.1.1g</span><br><span class="line">cldr: 37.0</span><br><span class="line">icu: 67.1</span><br><span class="line">tz: 2020a</span><br><span class="line">unicode: 13.0</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>npm-check检查更新</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>npm-upgrade更新</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br></pre></td></tr></table></figure>
-
-<p>这时候会有一个选择菜单式的持续输出供你选择依赖包的更新与否<br>一路回车键或者输入 <code>yes</code> 即可。</p>
+        <h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><blockquote>
+<p>数据表对应到实体类的映射，即：用代码描述一个数据表的结构</p>
+</blockquote>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><blockquote>
+<p>Model 是 MVC 中的一个概念，可能与 Entity 不会一一对应，因为他只在 MVC 这个模型当中用于数据展示时用得到，他有可能是一个优化后的精简后的即对原始数据进行处理过的数据对象。</p>
+</blockquote>
+<h2 id="Dto"><a href="#Dto" class="headerlink" title="Dto"></a>Dto</h2><blockquote>
+<p>Dto 全称 (Data Transfer Object) 数据传输对象</p>
+<p>Dto 对象与 Model 有些相似，但 Model 是 MVC 模式中的一个概念与 Dto 是有一定区别的。</p>
+<p>Dto 多用于程序中数据的传输，比如程序从数据库中读取的数据映射为 Entity 对象，然后数据的流向需要向客户端传输，但用户可能不需要数据库中的某些数据，这时候 Dto 就可以对原始数据进行处理然后传往用户端。同样的客户端向程序传入数据时仅仅是用户方便处理的数据，但并不适合用于最后的数据存储，这时候将 Dto 转为 Entity 再保存到数据库当中。</p>
+</blockquote>
+<hr>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><blockquote>
+<p>对于Bean而言，只要是Java的类的就可以称为一个Bean。</p>
+<p>更用在Spring上，被Spring管理的对象就可以将其称作为Bean。</p>
+<p>它不仅仅可以包括对象的属性以及get,set方法，还可以有具体的业务逻辑。</p>
+</blockquote>
+<h2 id="POJO"><a href="#POJO" class="headerlink" title="POJO"></a>POJO</h2><blockquote>
+<p>除了属性和get、set方法外不包含具体的业务逻辑方法。</p>
+<p>这个和 Model 很相像，和 Entity 区别在于没有和数据表中字段一一对应。</p>
+</blockquote>
+<h2 id="EJB"><a href="#EJB" class="headerlink" title="EJB"></a>EJB</h2><blockquote>
+<p>即EnterpriseBean，也就是Enterprise JavaBean（EJB）被称为Java企业Bean，是java的核心代码。</p>
+<p>分别是会话Bean（Session Bean）、实体Bean（Entity Bean）、和消息驱动Bean（MessageDriven Bean）。</p>
+</blockquote>
 
     </div>
 
@@ -238,13 +245,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/21/2020-10-21@9271c444-c3f2-486e-b663-7e1e35809725/" rel="prev" title="在 ASP.NET Core 3.0 中获取主机根目录">
-      <i class="fa fa-chevron-left"></i> 在 ASP.NET Core 3.0 中获取主机根目录
+    <a href="/2020/10/22/2020-10-22@a4a3c125-7ff7-43f4-987a-44c9257b93b1/" rel="prev" title="C# Image 对象与 Base64 字符串互相转换">
+      <i class="fa fa-chevron-left"></i> C# Image 对象与 Base64 字符串互相转换
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/22/2020-10-22@a4a3c125-7ff7-43f4-987a-44c9257b93b1/" rel="next" title="C# Image 对象与 Base64 字符串互相转换">
-      C# Image 对象与 Base64 字符串互相转换 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -303,7 +307,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-%E6%9B%B4%E6%96%B0HEXO%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">案例 更新HEXO环境依赖</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Entity"><span class="nav-number">1.</span> <span class="nav-text">Entity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model"><span class="nav-number">2.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dto"><span class="nav-number">3.</span> <span class="nav-text">Dto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">4.</span> <span class="nav-text">Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJO"><span class="nav-number">5.</span> <span class="nav-text">POJO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EJB"><span class="nav-number">6.</span> <span class="nav-text">EJB</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
