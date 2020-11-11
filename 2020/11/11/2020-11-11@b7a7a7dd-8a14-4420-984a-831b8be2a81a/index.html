@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"cglang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。">
+  <meta name="description" content="EF Core (二) EF 中的一些概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EF 中的 Count 与 Any">
-<meta property="og:url" content="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/index.html">
+<meta property="og:title" content="大佬不懂小白的苦之 EF Core (二) EF 中的一些概念">
+<meta property="og:url" content="https://cglang.github.io/2020/11/11/2020-11-11@b7a7a7dd-8a14-4420-984a-831b8be2a81a/index.html">
 <meta property="og:site_name" content="CGLang">
-<meta property="og:description" content="这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。">
+<meta property="og:description" content="EF Core (二) EF 中的一些概念">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-25T12:13:27.000Z">
-<meta property="article:modified_time" content="2020-11-02T07:07:18.411Z">
+<meta property="article:published_time" content="2020-11-11T13:10:02.000Z">
+<meta property="article:modified_time" content="2020-11-11T14:39:07.213Z">
 <meta property="article:author" content="CGLang">
-<meta property="article:tag" content="none">
+<meta property="article:tag" content="efcore">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/">
+<link rel="canonical" href="https://cglang.github.io/2020/11/11/2020-11-11@b7a7a7dd-8a14-4420-984a-831b8be2a81a/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>EF 中的 Count 与 Any | CGLang</title>
+  <title>大佬不懂小白的苦之 EF Core (二) EF 中的一些概念 | CGLang</title>
   
 
 
@@ -159,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/">
+    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/11/11/2020-11-11@b7a7a7dd-8a14-4420-984a-831b8be2a81a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -172,7 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          EF 中的 Count 与 Any
+          大佬不懂小白的苦之 EF Core (二) EF 中的一些概念
         </h1>
 
         <div class="post-meta">
@@ -181,16 +181,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-10-25 20:13:27" itemprop="dateCreated datePublished" datetime="2020-10-25T20:13:27+08:00">2020-10-25</time>
+              <time title="创建时间：2020-11-11 21:10:02 / 修改时间：22:39:07" itemprop="dateCreated datePublished" datetime="2020-11-11T21:10:02+08:00">2020-11-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-02 15:07:18" itemprop="dateModified" datetime="2020-11-02T15:07:18+08:00">2020-11-02</time>
-              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -200,7 +194,7 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。</div>
+            <div class="post-description">EF Core (二) EF 中的一些概念</div>
 
         </div>
       </header>
@@ -211,13 +205,76 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在很多时候，我们需要从数据库条件判断有没有符合某些条件的数据，通常我们是这么做的。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> entityNum = _sqlliteDbContex.Set&lt;StudentEntity&gt;()</span><br><span class="line">    .Where(x =&gt; x.Name == <span class="string">&quot;张三&quot;</span>).Count();</span><br><span class="line"><span class="keyword">if</span> (entityNum &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 这里处理逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="DbContext"><a href="#DbContext" class="headerlink" title="DbContext"></a>DbContext</h2><p>DbContext是实体类和数据库之间的桥梁，<strong>DbContext主要负责与数据交互</strong>，抛出抽象化用面向对象的方式我们可以把他当做一个数据库对象。</p>
+<ol>
+<li><code>DbContext </code> 包含所有的实体映射到数据库表的实体集(DbSet&lt;TEntity&gt;)</li>
+<li><code>DbContext</code> 将 <code>LINQ-to-Entities</code> 查询转换为SQL查询并将其发送到数据库。</li>
+<li>更改跟踪: 它跟踪每个实体从数据库中查询出来后发生的修改变化。</li>
+<li>持久化数据: 它也基于实体状态执行插入、更新和删除操作到数据库中。</li>
+</ol>
+<blockquote>
+<p>通俗的讲就是我要对数据库进行的任何操作都要通过 DbContext 来进行</p>
+</blockquote>
+<h2 id="DbSet-lt-TEntity-gt"><a href="#DbSet-lt-TEntity-gt" class="headerlink" title="DbSet&lt;TEntity&gt;"></a>DbSet&lt;TEntity&gt;</h2><p><code>DbSet</code> 是从数据库中查询到的指定类型的所有实体的集合，通俗的将就是他可以代表数据库中某张表的所有记录。</p>
+<h2 id="实体跟踪"><a href="#实体跟踪" class="headerlink" title="实体跟踪"></a>实体跟踪</h2><p>在EF中，查询到的实体共有五中状态分别是</p>
+<ul>
+<li><strong>detached</strong>：实体不在上下文的追踪范围内，如刚new的实体。</li>
+<li><strong>unchanged</strong>：未改变，如刚从数据库读取出来的实体。</li>
+<li><strong>added</strong>：添加状态，一般执行Add/AddRange时标记为added。</li>
+<li><strong>deleted</strong>：删除状态，一般执行Remove/RemoveRange时标记为deleted。</li>
+<li><strong>modified</strong>：修改状态，改变了实体的属性会处于这个状态。</li>
+</ul>
+<p><strong>状态的转变</strong></p>
+<ul>
+<li><strong>added</strong> 状态的实体不能转为 <strong>deleted</strong> 和 <strong>modified</strong> 状态</li>
+<li><strong>deleted</strong> 状态的实体不能转为 <strong>added</strong> 状态</li>
+<li><strong>modified</strong> 状态的实体可转为 <strong>deleted</strong> 状态，不能转换为 <strong>added</strong> 状态。</li>
+</ul>
+<blockquote>
+<p>一般不会手动改变实体的状态，除非有特殊需求。</p>
+</blockquote>
+<h2 id="EF-查询的过程"><a href="#EF-查询的过程" class="headerlink" title="EF 查询的过程"></a>EF 查询的过程</h2><ol>
+<li>首先是构建查询语句</li>
+<li>将构建好的查询语句发送到数据库进行查询</li>
+<li>然后将查询到的数据映射为 <code>实体类</code> 集合</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上一节中的代码</span></span><br><span class="line"><span class="keyword">var</span> studentList = context.Students.ToList();</span><br></pre></td></tr></table></figure>
 
-<p>其实 EF 给我们提供了 Any 这个方法</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> any1 = <span class="keyword">await</span> _students</span><br><span class="line">    .Any(x =&gt; x.Name == <span class="string">&quot;张三&quot;</span> &amp;&amp; x.Age == <span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(any1)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 这里处理逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>context</code> 就是我们的 <code>DbContext</code></li>
+<li><code>context.Students</code> 就是我们的 <code>DbSet</code> 他的实际类型为 <code>DbSet&lt;StudentEntity&gt;</code></li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上面的代码我们可以写为</span></span><br><span class="line">DbSet&lt;StudentEntity&gt; dbSet = context.Students;</span><br><span class="line"><span class="keyword">var</span> studentList = dbSet.ToList();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">DbSet&lt;StudentEntity&gt; dbSet = context.Set&lt;StudentEntity&gt;();</span><br><span class="line"><span class="keyword">var</span> studentList = dbSet.ToList();</span><br></pre></td></tr></table></figure>
 
-<p>他这个方法就是说 通过某个条件表达式从数据库中查询数据有无符合此条件的记录，有就返回 True，无任何匹配项就返回 False。</p>
+
+
+<h2 id="EF-简单条件查询"><a href="#EF-简单条件查询" class="headerlink" title="EF 简单条件查询"></a>EF 简单条件查询</h2><p>我们使用 DbSet 的 <code>Where</code> 方法来来限制条件进行查询，在 <code>Main</code> 方法中添加:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentEntity = context.Students.Where(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>).FirstOrDefault();</span><br><span class="line">Console.WriteLine(studentEntity.ToString());</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以查询到 Name 为 Job 的记录了，其实上列代码可以简写为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这两句代码实际上是等价的，最终生成的SQL一样的</p>
+<ul>
+<li><code>FirstOrDefault</code> 方法的作用是获取查询记录中的第一条数据，如果没有则返回 <code>null</code></li>
+</ul>
+<h2 id="EF-修改数据"><a href="#EF-修改数据" class="headerlink" title="EF 修改数据"></a>EF 修改数据</h2><blockquote>
+<p>在EF中修改一条数据或多条数据需要先进行数据的查询，使实体处于跟踪状态</p>
+</blockquote>
+<p>新建一个项目或者在原项目中更改 <code>Main</code> 方法中代码为:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (EfCoreContext context = <span class="keyword">new</span> EfCoreContext())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;修改前&quot;</span>);</span><br><span class="line">    Console.WriteLine(studentEntity.ToString());</span><br><span class="line"></span><br><span class="line">    studentEntity.Age = <span class="number">23</span>;</span><br><span class="line">    context.SaveChanges();</span><br><span class="line">    studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;修改后&quot;</span>);</span><br><span class="line">    Console.WriteLine(studentEntity.ToString());</span><br><span class="line">&#125;</span><br><span class="line">Console.ReadKey();</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改前</span><br><span class="line">姓名:Job        年龄:20 性别:男</span><br><span class="line">修改后</span><br><span class="line">姓名:Job        年龄:23 性别:男</span><br></pre></td></tr></table></figure>
+
+<p>有没有发现使用EF进行数据库的操作就像是操作应用程序内存中的数据一样方便。</p>
+<ul>
+<li><strong>context.SaveChanges()</strong> 会将已经进行跟踪的数据保存到数据库。实体的跟踪状态再次就可以体现，他可以让EF知道你对哪些数据进行了什么操作，然后 EF 可以对数据库进行相应的操作。(实际上第一节的时候就有此操作)</li>
+</ul>
+<hr>
+<blockquote>
+<p>下一节我们主要讲各种查询</p>
+</blockquote>
 
     </div>
 
@@ -227,7 +284,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/none/" rel="tag"># none</a>
+              <a href="/tags/efcore/" rel="tag"># efcore</a>
           </div>
 
         
@@ -236,12 +293,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/" rel="prev" title="Entity/Model/Dto等的区别">
-      <i class="fa fa-chevron-left"></i> Entity/Model/Dto等的区别
+    <a href="/2020/11/11/2020-11-11@8f30b816-c8e8-4196-b738-960a69feff7e/" rel="prev" title="大佬不懂小白的苦之 EF Core (一) EF的简单使用">
+      <i class="fa fa-chevron-left"></i> 大佬不懂小白的苦之 EF Core (一) EF的简单使用
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/10/26/2020-10-26@0127151d-10f4-460e-ac55-304457060ed1/" rel="next" title="JavaScript Date 对象操作">
-      JavaScript Date 对象操作 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/12/2020-12-12@a9bc03db-f053-4700-a0b5-337eaa098b7c/" rel="next" title="序列化与反序列化">
+      序列化与反序列化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -301,7 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DbContext"><span class="nav-number">1.</span> <span class="nav-text">DbContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DbSet-lt-TEntity-gt"><span class="nav-number">2.</span> <span class="nav-text">DbSet&lt;TEntity&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E8%B7%9F%E8%B8%AA"><span class="nav-number">3.</span> <span class="nav-text">实体跟踪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EF-%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">EF 查询的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EF-%E7%AE%80%E5%8D%95%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text">EF 简单条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EF-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">EF 修改数据</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
