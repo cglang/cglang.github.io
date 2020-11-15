@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"cglang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。">
+  <meta name="description" content="路径问题明明就是一个小问题，但就是会引发大问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EF 中的 Count 与 Any">
-<meta property="og:url" content="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/index.html">
+<meta property="og:title" content=".NET Core 程序程序路径问题">
+<meta property="og:url" content="https://cglang.github.io/2020/11/14/2020-11-14@137fb4e7-a243-4f30-b3c2-4c4ded62ee36/index.html">
 <meta property="og:site_name" content="CGLang">
-<meta property="og:description" content="这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。">
+<meta property="og:description" content="路径问题明明就是一个小问题，但就是会引发大问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-25T12:13:27.000Z">
-<meta property="article:modified_time" content="2020-11-02T07:07:18.411Z">
+<meta property="article:published_time" content="2020-11-14T14:44:33.000Z">
+<meta property="article:modified_time" content="2020-11-15T01:11:24.576Z">
 <meta property="article:author" content="CGLang">
 <meta property="article:tag" content="none">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/">
+<link rel="canonical" href="https://cglang.github.io/2020/11/14/2020-11-14@137fb4e7-a243-4f30-b3c2-4c4ded62ee36/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>EF 中的 Count 与 Any | CGLang</title>
+  <title>.NET Core 程序程序路径问题 | CGLang</title>
   
 
 
@@ -159,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/10/25/2020-10-25@7ac42d4d-ca5e-42d6-87bc-fbd5d2d6ddb7/">
+    <link itemprop="mainEntityOfPage" href="https://cglang.github.io/2020/11/14/2020-11-14@137fb4e7-a243-4f30-b3c2-4c4ded62ee36/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -172,7 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          EF 中的 Count 与 Any
+          .NET Core 程序程序路径问题
         </h1>
 
         <div class="post-meta">
@@ -182,14 +182,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-25 20:13:27" itemprop="dateCreated datePublished" datetime="2020-10-25T20:13:27+08:00">2020-10-25</time>
+              <time title="创建时间：2020-11-14 22:44:33" itemprop="dateCreated datePublished" datetime="2020-11-14T22:44:33+08:00">2020-11-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-02 15:07:18" itemprop="dateModified" datetime="2020-11-02T15:07:18+08:00">2020-11-02</time>
+                <time title="修改时间：2020-11-15 09:11:24" itemprop="dateModified" datetime="2020-11-15T09:11:24+08:00">2020-11-15</time>
               </span>
 
           
@@ -200,7 +200,7 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">这是在没事看博客园的帖子的时候发现了一篇叫做《你必须知道的EF知识和经验》，然后我就深入了解了下，差点进了个坑。</div>
+            <div class="post-description">路径问题明明就是一个小问题，但就是会引发大问题。</div>
 
         </div>
       </header>
@@ -211,13 +211,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在很多时候，我们需要从数据库条件判断有没有符合某些条件的数据，通常我们是这么做的。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> entityNum = _sqlliteDbContex.Set&lt;StudentEntity&gt;()</span><br><span class="line">    .Where(x =&gt; x.Name == <span class="string">&quot;张三&quot;</span>).Count();</span><br><span class="line"><span class="keyword">if</span> (entityNum &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 这里处理逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="获取应用程序相关的路径或文件名"><a href="#获取应用程序相关的路径或文件名" class="headerlink" title="获取应用程序相关的路径或文件名"></a>获取应用程序相关的路径或文件名</h2><h3 id="通过-Assembly-类"><a href="#通过-Assembly-类" class="headerlink" title="通过 Assembly 类"></a>通过 Assembly 类</h3><p><strong>官方文档说明</strong>：表示一个程序集，它是一个可重用、无版本冲突并且可自我描述的公共语言运行时应用程序构建基块。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = Assembly.GetEntryAssembly().Location;</span><br><span class="line">Console.WriteLine(t);</span><br></pre></td></tr></table></figure>
 
-<p>其实 EF 给我们提供了 Any 这个方法</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> any1 = <span class="keyword">await</span> _students</span><br><span class="line">    .Any(x =&gt; x.Name == <span class="string">&quot;张三&quot;</span> &amp;&amp; x.Age == <span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(any1)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 这里处理逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\GetApplicaationPath\ConsoleAppCore\bin\Debug\netcoreapp3<span class="number">.1</span>\ConsoleAppCore.dll</span><br></pre></td></tr></table></figure>
 
-<p>他这个方法就是说 通过某个条件表达式从数据库中查询数据有无符合此条件的记录，有就返回 True，无任何匹配项就返回 False。</p>
+<p>获取默认应用程序域中的进程可执行文件。 在其他的应用程序域中，这是由 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.appdomain.executeassembly?view=net-5.0#System_AppDomain_ExecuteAssembly_System_String_">ExecuteAssembly(String)</a> 执行的第一个可执行文件。也就是应用程序运行的第一个可执行文件。</p>
+<h3 id="通过-AppDomain-类"><a href="#通过-AppDomain-类" class="headerlink" title="通过 AppDomain 类"></a>通过 AppDomain 类</h3><p><strong>官方文档说明</strong>：表示应用程序域，它是一个应用程序在其中执行的独立环境。也即<strong>获取当前程序运行的根目录</strong>。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;</span><br><span class="line">Console.WriteLine(t);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\GetApplicaationPath\ConsoleAppCore\bin\Debug\netcoreapp3.1\</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>CurrentDomain</strong> 获取当前 Thread 的当前应用程序域。</p>
+</li>
+<li><p><strong>SetupInformation</strong> 获取此实例的应用程序域配置信息。</p>
+</li>
+<li><p><strong>ApplicationBase</strong> 获取或设置包含该应用程序的目录的名称。</p>
+</li>
+</ul>
+<h3 id="通过-Process-类"><a href="#通过-Process-类" class="headerlink" title="通过 Process 类"></a>通过 Process 类</h3><p><strong>官方文档说明</strong>：提供对本地和远程进程的访问权限并使你能够启动和停止本地系统进程。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = Process.GetCurrentProcess().MainModule.FileName;</span><br><span class="line">Console.WriteLine(t);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\GetApplicaationPath\ConsoleAppCore\bin\Debug\netcoreapp3.1\ConsoleAppCore.exe</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>GetCurrentProcess()</strong> 获取新的 Process 组件并将其与当前活动的进程关联。</p>
+</li>
+<li><p><strong>MainModule</strong> 获取关联进程的主模块。</p>
+</li>
+<li><p><strong>FileName</strong> 获取模块的完整路径。</p>
+</li>
+</ul>
+<h3 id="通过-Directory-类"><a href="#通过-Directory-类" class="headerlink" title="通过 Directory 类"></a>通过 Directory 类</h3><p>公开用于通过目录和子目录进行创建、移动和枚举的静态方法</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = Directory.GetCurrentDirectory();</span><br><span class="line">Console.WriteLine(t);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\GetApplicaationPath\ConsoleAppCore\bin\Debug\netcoreapp3.1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>GetCurrentDirectory()</strong> 获取应用程序的当前工作目录(获取的是一个文件夹的全部路径名称他不包含最后的”\“)。</li>
+</ul>
+<h3 id="通过-IWebHostEnvironment-接口"><a href="#通过-IWebHostEnvironment-接口" class="headerlink" title="通过 IWebHostEnvironment 接口"></a>通过 IWebHostEnvironment 接口</h3><p>在 ASP.Net Core Web 应用程序中，我们可以通过注入的方式，获取 <code>IWebHostEnvironment</code> 对象，通过他的相应属性获取路径。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HomeController</span> : <span class="title">Controller</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IWebHostEnvironment _webHostEnvironment;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params">IWebHostEnvironment webHostEnvironment</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">this</span>._webHostEnvironment = webHostEnvironment;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">UploadImg</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">string</span> path = _webHostEnvironment.ContentRootPath;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>ContentRootPath</strong> 获取主机根目录</li>
+</ul>
+<h2 id="路径的拼接"><a href="#路径的拼接" class="headerlink" title="路径的拼接"></a>路径的拼接</h2><p>获取应用程序的某个配置文件</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rootPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;</span><br><span class="line"><span class="keyword">var</span> testPath = Path.Combine(rootPath, <span class="string">&quot;config&quot;</span>, <span class="string">&quot;test.conf&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Path.Combine()</strong> 通过此静态方法可以拼接文件目录，并且这种方法是可跨平台使用的。</li>
+</ul>
 
     </div>
 
@@ -236,12 +285,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/23/2020-10-23@b9b99c5d-935b-40fb-93ff-daee7fa7e34b/" rel="prev" title="Entity/Model/Dto等的区别">
-      <i class="fa fa-chevron-left"></i> Entity/Model/Dto等的区别
+    <a href="/2020/11/13/2020-11-13@caf5f0c5-d00e-4242-befc-140f5d504ef1/" rel="prev" title="大佬不懂小白的苦之 EF Core (四) 导航属性相关">
+      <i class="fa fa-chevron-left"></i> 大佬不懂小白的苦之 EF Core (四) 导航属性相关
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/10/26/2020-10-26@0127151d-10f4-460e-ac55-304457060ed1/" rel="next" title="JavaScript Date 对象操作">
-      JavaScript Date 对象操作 <i class="fa fa-chevron-right"></i>
+    <a href="/9000/01/01/0000-00-00@00000000-0000-0000-0000-000000000000/" rel="next" title="[置顶]">
+      [置顶] <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -301,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E8%B7%AF%E5%BE%84%E6%88%96%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">获取应用程序相关的路径或文件名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-Assembly-%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">通过 Assembly 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-AppDomain-%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">通过 AppDomain 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-Process-%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">通过 Process 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-Directory-%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">通过 Directory 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-IWebHostEnvironment-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.5.</span> <span class="nav-text">通过 IWebHostEnvironment 接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">路径的拼接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -317,12 +366,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
