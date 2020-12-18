@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="EF Core (二) EF 中的一些概念"><meta name="keywords" content="efcore"><meta name="author" content="cglang"><meta name="copyright" content="cglang"><title>大佬不懂小白的苦之 EF Core (二) EF 中的一些概念 | 飞翔的鱼</title><link rel="shortcut icon" href="/blog/img/melody-favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.2.0'
+} </script><meta name="generator" content="Hexo 5.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DbContext"><span class="toc-number">1.</span> <span class="toc-text">DbContext</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DbSet-lt-TEntity-gt"><span class="toc-number">2.</span> <span class="toc-text">DbSet&lt;TEntity&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E8%B7%9F%E8%B8%AA"><span class="toc-number">3.</span> <span class="toc-text">实体跟踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EF-%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">EF 查询的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EF-%E7%AE%80%E5%8D%95%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">EF 简单条件查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EF-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">EF 修改数据</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://cglang.com/blog/img/avatar.jpg"></div><div class="author-info__name text-center">cglang</div><div class="author-info__description text-center">我自是光亮</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">文章</span><span class="pull-right">37</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://passion-ke.github.io/">畅谈小屋</a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">飞翔的鱼</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/blog/">主页</a><a class="site-page" href="/blog/tags">标签</a><a class="site-page" href="/blog/about">关于</a></span><span class="pull-right"></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">大佬不懂小白的苦之 EF Core (二) EF 中的一些概念</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-11-11</time></div><div class="article-container" id="post-content"><h2 id="DbContext"><a href="#DbContext" class="headerlink" title="DbContext"></a>DbContext</h2><p>DbContext是实体类和数据库之间的桥梁，<strong>DbContext主要负责与数据交互</strong>，抛出抽象化用面向对象的方式我们可以把他当做一个数据库对象。</p>
+<ol>
+<li><code>DbContext </code> 包含所有的实体映射到数据库表的实体集(DbSet&lt;TEntity&gt;)</li>
+<li><code>DbContext</code> 将 <code>LINQ-to-Entities</code> 查询转换为SQL查询并将其发送到数据库。</li>
+<li>更改跟踪: 它跟踪每个实体从数据库中查询出来后发生的修改变化。</li>
+<li>持久化数据: 它也基于实体状态执行插入、更新和删除操作到数据库中。</li>
+</ol>
+<blockquote>
+<p>通俗的讲就是我要对数据库进行的任何操作都要通过 DbContext 来进行</p>
+</blockquote>
+<h2 id="DbSet-lt-TEntity-gt"><a href="#DbSet-lt-TEntity-gt" class="headerlink" title="DbSet&lt;TEntity&gt;"></a>DbSet&lt;TEntity&gt;</h2><p><code>DbSet</code> 是从数据库中查询到的指定类型的所有实体的集合，通俗的讲就是他可以代表数据库中某张表的所有记录。</p>
+<h2 id="实体跟踪"><a href="#实体跟踪" class="headerlink" title="实体跟踪"></a>实体跟踪</h2><p>在EF中框架会对你查询到的实体进行跟踪，以确保知道你对数据进行了什么样的修改，然后在保存修改时将修改对应到数据库中，查询到的实体共有五中状态分别是</p>
+<ul>
+<li><strong>detached</strong>：实体不在上下文的追踪范围内，如刚new的实体。</li>
+<li><strong>unchanged</strong>：未改变，如刚从数据库读取出来的实体。</li>
+<li><strong>added</strong>：添加状态，一般执行Add/AddRange时标记为added。</li>
+<li><strong>deleted</strong>：删除状态，一般执行Remove/RemoveRange时标记为deleted。</li>
+<li><strong>modified</strong>：修改状态，改变了实体的属性会处于这个状态。</li>
+</ul>
+<p><strong>状态的转变</strong></p>
+<ul>
+<li><strong>added</strong> 状态的实体不能转为 <strong>deleted</strong> 和 <strong>modified</strong> 状态</li>
+<li><strong>deleted</strong> 状态的实体不能转为 <strong>added</strong> 状态</li>
+<li><strong>modified</strong> 状态的实体可转为 <strong>deleted</strong> 状态，不能转换为 <strong>added</strong> 状态。</li>
+</ul>
+<blockquote>
+<p>一般不会手动改变实体的状态，除非有特殊需求。</p>
+</blockquote>
+<h2 id="EF-查询的过程"><a href="#EF-查询的过程" class="headerlink" title="EF 查询的过程"></a>EF 查询的过程</h2><ol>
+<li>首先是获取数据源</li>
+<li>构建查询语句</li>
+<li>然后将构建好的查询语句发送到数据库进行查询并将数据映射为 <code>实体类</code> 集合</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上一节中的代码</span></span><br><span class="line"><span class="keyword">var</span> studentList = context.Students.ToList();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>context</code> 就是我们的 <code>DbContext</code></li>
+<li><code>context.Students</code> 就是我们的 <code>DbSet</code> 他的实际类型为 <code>DbSet&lt;StudentEntity&gt;</code></li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上面的代码我们可以写为</span></span><br><span class="line">DbSet&lt;StudentEntity&gt; dbSet = context.Students;</span><br><span class="line"><span class="keyword">var</span> studentList = dbSet.ToList();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">DbSet&lt;StudentEntity&gt; dbSet = context.Set&lt;StudentEntity&gt;();</span><br><span class="line"><span class="keyword">var</span> studentList = dbSet.ToList();</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="EF-简单条件查询"><a href="#EF-简单条件查询" class="headerlink" title="EF 简单条件查询"></a>EF 简单条件查询</h2><p>我们使用 DbSet 的 <code>Where</code> 方法来来限制条件进行查询，在 <code>Main</code> 方法中添加:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentEntity = context.Students.Where(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>).FirstOrDefault();</span><br><span class="line">Console.WriteLine(studentEntity.ToString());</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以查询到 Name 为 Job 的记录了，其实上列代码可以简写为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这两句代码实际上是等价的，最终生成的SQL一样的</p>
+<ul>
+<li><code>FirstOrDefault</code> 方法的作用是获取查询记录中的第一条数据，如果没有则返回 <code>null</code></li>
+</ul>
+<h2 id="EF-修改数据"><a href="#EF-修改数据" class="headerlink" title="EF 修改数据"></a>EF 修改数据</h2><blockquote>
+<p>在EF中修改一条数据或多条数据需要先进行数据的查询，使实体处于跟踪状态</p>
+</blockquote>
+<p>新建一个项目或者在原项目中更改 <code>Main</code> 方法中代码为:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (EfCoreContext context = <span class="keyword">new</span> EfCoreContext())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;修改前&quot;</span>);</span><br><span class="line">    Console.WriteLine(studentEntity.ToString());</span><br><span class="line"></span><br><span class="line">    studentEntity.Age = <span class="number">23</span>;</span><br><span class="line">    context.SaveChanges();</span><br><span class="line">    studentEntity = context.Students.FirstOrDefault(x =&gt; x.Name == <span class="string">&quot;Job&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;修改后&quot;</span>);</span><br><span class="line">    Console.WriteLine(studentEntity.ToString());</span><br><span class="line">&#125;</span><br><span class="line">Console.ReadKey();</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改前</span><br><span class="line">姓名:Job        年龄:20 性别:男</span><br><span class="line">修改后</span><br><span class="line">姓名:Job        年龄:23 性别:男</span><br></pre></td></tr></table></figure>
+
+<p>有没有发现使用EF进行数据库的操作就像是操作应用程序内存中的数据一样方便。</p>
+<ul>
+<li><strong>context.SaveChanges()</strong> 会将已经进行跟踪的数据保存到数据库。实体的跟踪状态再次就可以体现，他可以让EF知道你对哪些数据进行了什么操作，然后 EF 可以对数据库进行相应的操作。(实际上第一节的时候就有此操作)</li>
+</ul>
+<hr>
+<blockquote>
+<p>下一节我们主要讲各种查询</p>
+</blockquote>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/efcore/">efcore</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2020/11/12/efcore/2020-11-12@5141589/"><i class="fa fa-chevron-left">  </i><span>大佬不懂小白的苦之 EF Core (三) EF中的常用的查询</span></a></div><div class="next-post pull-right"><a href="/blog/2020/11/11/efcore/2020-11-11@5096037/"><span>大佬不懂小白的苦之 EF Core (一) EF的简单使用</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 By cglang</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.9.0"></script><script src="/blog/js/fancybox.js?version=1.9.0"></script><script src="/blog/js/sidebar.js?version=1.9.0"></script><script src="/blog/js/copy.js?version=1.9.0"></script><script src="/blog/js/fireworks.js?version=1.9.0"></script><script src="/blog/js/transition.js?version=1.9.0"></script><script src="/blog/js/scroll.js?version=1.9.0"></script><script src="/blog/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

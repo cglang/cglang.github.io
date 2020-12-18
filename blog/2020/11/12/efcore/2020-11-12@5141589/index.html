@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="EF Core (三) EF中的常用的查询"><meta name="keywords" content="efcore"><meta name="author" content="cglang"><meta name="copyright" content="cglang"><title>大佬不懂小白的苦之 EF Core (三) EF中的常用的查询 | 飞翔的鱼</title><link rel="shortcut icon" href="/blog/img/melody-favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.2.0'
+} </script><meta name="generator" content="Hexo 5.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%93%BE%E5%BC%8F%E6%96%B9%E6%B3%95%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">基于链式方法的查询模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E9%9B%86%E6%88%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.</span> <span class="toc-text">语言集成查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%B7%9F%E8%B8%AA%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.</span> <span class="toc-text">无跟踪查询</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://cglang.com/blog/img/avatar.jpg"></div><div class="author-info__name text-center">cglang</div><div class="author-info__description text-center">我自是光亮</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">文章</span><span class="pull-right">37</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://passion-ke.github.io/">畅谈小屋</a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">飞翔的鱼</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/blog/">主页</a><a class="site-page" href="/blog/tags">标签</a><a class="site-page" href="/blog/about">关于</a></span><span class="pull-right"></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">大佬不懂小白的苦之 EF Core (三) EF中的常用的查询</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-11-12</time></div><div class="article-container" id="post-content"><blockquote>
+<p>本文列举一下常用的查询方式，具体可搜索 <code>LINQ</code> 关键字进行学习</p>
+</blockquote>
+<h2 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h2><p><strong>语言集成查询/Query Syntax</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> query = <span class="keyword">from</span> r <span class="keyword">in</span> students <span class="keyword">where</span> r.score &lt; <span class="number">60</span> <span class="keyword">orderby</span> r.score <span class="keyword">select</span> r;</span><br></pre></td></tr></table></figure>
+
+<p><strong>链式方法查询/Method Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var query2&#x3D; students.Where(r &#x3D;&gt; r.score &lt; 60).OrderBy(r &#x3D;&gt; r.score).Select(r &#x3D;&gt; r);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面两种linq查询语法是等价的</li>
+</ul>
+<h3 id="基于链式方法的查询模式"><a href="#基于链式方法的查询模式" class="headerlink" title="基于链式方法的查询模式"></a>基于链式方法的查询模式</h3><p><strong>1. 筛选</strong> <code>Where</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">context.Students.Where(x =&gt; x.Age &gt; <span class="number">10</span> &amp;&amp; x.Gender == <span class="string">&quot;男&quot;</span>);</span><br><span class="line"><span class="comment">// 可进行包含查询也就是模糊查询</span></span><br><span class="line">context.Students.Where(x =&gt; x.Age &gt; <span class="number">10</span> &amp;&amp; x.Gender.Contains(<span class="string">&quot;男&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过构建 <code>Lambda</code> 表达式进行查询。</li>
+</ul>
+<p><strong>2. 获取单个元素</strong> <code>First</code> <code>Last</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentList = context.Students.Where(x =&gt; x.Age &gt; <span class="number">10</span> &amp;&amp; x.Gender == <span class="string">&quot;男&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> f1 = studentList.First();</span><br><span class="line"><span class="keyword">var</span> f2 = studentList.FirstOrDefault();</span><br><span class="line"><span class="keyword">var</span> l1 = studentList.Last();</span><br><span class="line"><span class="keyword">var</span> l2 = studentList.LastOrDefault();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们可以看到 Where 的返回值类型为 <code>IQueryable&lt;T&gt;</code> 而这个接口类型就是 LINQ 查询的基础，那么我们还可以通过此类型的数据集继续进行操作。</li>
+<li>通过 <code>First</code> 方法我们可以获取集合中的第一条数据，当集合中的数据数量为0的时候，此方法会抛出一个异常。而 <code>FirstOrDefault</code> 方法在这种情况下会返回一个 <code>null</code> 值，我以我们在用的时候经常会用 <code>FirstOrDefault</code> 的方式获取，这样仅仅是少了一次异常捕获，多了一次 <code>null</code> 值判断。</li>
+<li><code>Last</code> 与 <code>First</code> 用法相同，仅仅是从获取第一条记录变成了获取最后一条。</li>
+</ul>
+<p><strong>3. 映射</strong> <code>Select</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentList2 = studentList.Select(x =&gt; <span class="keyword">new</span> &#123; x.Name, x.Gender &#125;);</span><br><span class="line"><span class="comment">// 或者为新集合更改属性名称</span></span><br><span class="line"><span class="keyword">var</span> studentList3 = studentList.Select(x =&gt; <span class="keyword">new</span> &#123; NName = x.Name, GGender = x.Gender &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>映射即从一个集合到另一个集合的某种关系对应</li>
+</ul>
+<p>这样 <code>studentList2</code> <code>studentList3</code> 为一个匿名类型的集合，但我们还可以继续使用 foreach 将他遍历。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> v <span class="keyword">in</span> studentList2)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;姓名:<span class="subst">&#123;v.NName&#125;</span>\t性别:<span class="subst">&#123;v.GGender&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你会发现除了 <code>NName</code> 和 <code>GGender</code> 属性之外已经没有了其他的属性，其实这个操作也就相当于SQL当中限制查询字段的功能，实际上EF也是这么去做的。</li>
+</ul>
+<p>更多的我们要的还不是一个匿名的类型集合，所以我们映射到一个 DTO 类型当中，新建 <code>StodentDto</code> 类</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StudentDto</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Gender &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们只保留 <code>Name</code> 和 <code>Gender</code> 属性</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> studentList4 = studentList.Select(x =&gt; <span class="keyword">new</span> StudentDto &#123; Name = x.Name, Gender = x.Gender &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有了一个确切的类型之后我们可以做的操作将多于匿名类型。</li>
+</ul>
+<p><strong>4. 分区</strong> <code>Skip</code> <code>Take </code> </p>
+<p><code>Skip</code> 跳过指定条记录，<code>Take </code> 获取指定条记录。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳过前2条记录之后选择1条记录</span></span><br><span class="line">studentList.Skip(<span class="number">2</span>).Take(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>主要将之用于分页操作</li>
+</ul>
+<p><strong>5. 排序</strong> <code>OrderBy</code> <code>OrderByDescending</code> <code>ThenBy</code> <code>ThenByDescending</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.Students.OrderBy(x =&gt; x.Age).ThenByDescending(x =&gt; x.Name);<span class="comment">// 先通过Age升序排序然后通过Name降序排序</span></span><br><span class="line">context.Students.OrderByDescending(x =&gt; x.Age).ThenBy(x =&gt; x.Name);<span class="comment">// 先通过Age降序排序然后通过Name升序排序</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>6.获取记录条数</strong> <code>Count</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> EfCoreContext context = <span class="keyword">new</span> EfCoreContext();</span><br><span class="line"><span class="keyword">var</span> count = context.Students.Count();</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;Students表中有<span class="subst">&#123;count&#125;</span>条记录.&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.获取是否有符合条件的记录</strong> <code>Any</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exist = context.Students.Where(x =&gt; x.Name == <span class="string">&quot;张三&quot;</span>).Any();</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;Students表中是否有姓名为\&quot;张三\&quot;的记录:<span class="subst">&#123;exist&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>千万不要使用 if(x.Count() &gt; 0) 的方式去判断是否有符合条件的记录了，我们应该使用 Any</li>
+</ul>
+<hr>
+<h3 id="语言集成查询"><a href="#语言集成查询" class="headerlink" title="语言集成查询"></a>语言集成查询</h3><blockquote>
+<p>语言继承查询类似于SQL语句，相对于<strong>链式方法查询</strong>它更直观，但需要你熟悉SQL语法。</p>
+</blockquote>
+<ol>
+<li>定义并执行查询语句</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> query = <span class="keyword">from</span> student <span class="keyword">in</span> context.Students <span class="keyword">select</span> student;</span><br><span class="line"><span class="keyword">var</span> studentList = query.ToList();</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>综合</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过语言集成方式构建</span></span><br><span class="line"><span class="keyword">var</span> query2 = <span class="keyword">from</span> student <span class="keyword">in</span> context.Students</span><br><span class="line">             <span class="keyword">where</span> student.Age &gt; <span class="number">0</span> &amp;&amp; student.Name.Contains(<span class="string">&quot;J&quot;</span>)</span><br><span class="line">             <span class="keyword">orderby</span> student.Age <span class="keyword">descending</span></span><br><span class="line">             <span class="keyword">select</span> <span class="keyword">new</span> StudentDto</span><br><span class="line">             &#123;</span><br><span class="line">                 Name = student.Name,</span><br><span class="line">                 Gender = student.Gender</span><br><span class="line">             &#125;;</span><br><span class="line"><span class="comment">// 我们还可以继续构建表达式</span></span><br><span class="line">query2 = query2.Skip(<span class="number">1</span>).Take(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> v <span class="keyword">in</span> query2)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(<span class="string">$&quot;姓名:<span class="subst">&#123;v.Name&#125;</span>\t性别:<span class="subst">&#123;v.Gender&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以上我们构建了两次表达式，但真正的执行SQL查询EF只进行了一次，因为EF只在你使用数据的时候才会进行查询，即我们在foreach 的时候 EF 才进行数据库的查询。</li>
+</ul>
+<hr>
+<blockquote>
+<p>其他的操作比如 <strong>聚合</strong> <strong>多表连接</strong> 这里暂时不再介绍</p>
+</blockquote>
+<hr>
+<h2 id="无跟踪查询"><a href="#无跟踪查询" class="headerlink" title="无跟踪查询"></a>无跟踪查询</h2><p>无跟踪查询就是在你查询到数据之后不再对你查询到的数据进行跟踪，次用法在你保证查询出的数据作为只读数据来使用，这样会提升一定的性能，使用的方法也很简单。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.Students.AsNoTracking();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在表达式之后调用 <code>AsNoTracking()</code> 即可。</li>
+</ul>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/efcore/">efcore</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2020/11/13/efcore/2020-11-13@5276128/"><i class="fa fa-chevron-left">  </i><span>大佬不懂小白的苦之 EF Core (四) 导航属性相关</span></a></div><div class="next-post pull-right"><a href="/blog/2020/11/11/efcore/2020-11-11@5100202/"><span>大佬不懂小白的苦之 EF Core (二) EF 中的一些概念</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 By cglang</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.9.0"></script><script src="/blog/js/fancybox.js?version=1.9.0"></script><script src="/blog/js/sidebar.js?version=1.9.0"></script><script src="/blog/js/copy.js?version=1.9.0"></script><script src="/blog/js/fireworks.js?version=1.9.0"></script><script src="/blog/js/transition.js?version=1.9.0"></script><script src="/blog/js/scroll.js?version=1.9.0"></script><script src="/blog/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
