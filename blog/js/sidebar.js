@@ -23,7 +23,7 @@ $(function () {
         })
         $('#toggle-sidebar').velocity('stop').velocity({
           rotateZ: '0deg',
-          color: '#1F2D3D'
+          // color: '#1F2D3D'
         }, {
           duration: 200
         })
@@ -41,7 +41,7 @@ $(function () {
         })
         $('#toggle-sidebar').velocity('stop').velocity({
           rotateZ: '180deg',
-          color: '#99a9bf'
+          // color: '#99a9bf'
         }, {
           duration: 200
         })
