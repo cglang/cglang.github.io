@@ -1019,7 +1019,7 @@ footer.is-mobile {
     transform: translate3d(0, 4.5rem, 0);
   }
 }
-@media screen and (min-width: 1670px) {
+@media screen and (min-width: 1470px) {
   .gallery-item {
     width: 8rem;
     height: 8rem;
@@ -1605,12 +1605,12 @@ a.fancybox:focus {
     font-size: 2rem;
   }
 }
-@media screen and (min-width: 1670px) {
+@media screen and (min-width: 1470px) {
   .layout {
-    width: 1300px;
+    width: 1100px;
   }
   .recent-post-item .content iframe {
-    width: 1300px;
+    width: 1100px;
     height: 506.25px;
   }
 }
