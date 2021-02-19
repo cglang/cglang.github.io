@@ -25,12 +25,10 @@
                 <h2>反应速度测试</h2>
                 <p>等待背景变色之后点击按钮进行测试</p>
             </div>
-            <div class="mt50auto w100">
+            <div class="mt50auto w100p">
                 <button id="s_or_e" type="button" class="btn btn-primary">开始</button>
             </div>
-
-            <div id="result"></div>
-            <div>
+            <div class="pl50">
                 <span>
                     <strong>平局反应速度:</strong>
                 </span>
@@ -74,7 +72,7 @@
             data.push(time);
             option.series[0].data = data;
             myChart.setOption(option, true);
-            $("#maen").text(Average(data));
+            $("#maen").text(parseInt(Average(data)));
             $("body").css("background-color", "white");
         }
 

@@ -32,6 +32,14 @@ body {
   margin: 30px auto;
 }
 
+.pl50 {
+  padding-left: 50px;
+}
+
 .w100 {
+  width: 100%;
+}
+
+.w100p {
   width: 200px;
 }
