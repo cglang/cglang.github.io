@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  margin: 0 auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.wfbf h2 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wfbf p {
+  margin: 10px auto;
+  text-align: center;
+}
+
+#s_or_e {
+  margin: 0 auto;
+  width: 200px;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.mt50auto {
+  margin: 30px auto;
+}
+
+.w100 {
+  width: 200px;
+}

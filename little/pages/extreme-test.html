@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/extreme-test/main.css">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.0.1/echarts.min.js"></script>
+
+    <title>反应速度测试</title>
+</head>
+
+<body>
+    <div style="height: 100vh;">
+        <div id="warning" class="alert alert-warning alert-dismissible fade" role="alert">
+            <strong>警告:</strong>不要提前点击结束
+        </div>
+        <div class="main">
+            <div class="wfbf">
+                <h2>反应速度测试</h2>
+                <p>等待背景变色之后点击按钮进行测试</p>
+            </div>
+            <div class="mt50auto w100">
+                <button id="s_or_e" type="button" class="btn btn-primary">开始</button>
+            </div>
+
+            <div id="result"></div>
+            <div>
+                <span>
+                    <strong>平局反应速度:</strong>
+                </span>
+                <span id="maen">0</span>
+                <span>(ms)</span>
+            </div>
+            <div>
+                <div id="vexm" style="width: 100%;height:300px;"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var testStart = false;//测试是否已经开始
+        var data = [];
+        var clickTimeS, clickTimeE;
+        $("#s_or_e").on("click", function (btn) {
+            if ($("#s_or_e").text() == "开始") {
+                testStart = true;
+                setTimeout(function () {
+                    testStart = false;
+                    clickTimeS = new Date();
+                    $("body").css("background-color", "#43CBFF");
+                }, parseInt((Math.random() * 2000) + 1000));
+                $("#s_or_e").text("结束").removeClass("btn-primary").addClass("btn-success");
+            } else {
+                if (!testStart) {
+                    SetResult();
+                    $("#s_or_e").text("开始").removeClass("btn-success").addClass("btn-primary");
+                } else {
+                    $("#warning").addClass("show");
+                    setTimeout(function () {
+                        $("#warning").removeClass("show");
+                    }, 1000);
+                }
+            }
+        })
+
+        // 设置结果
+        function SetResult() {
+            var time = parseInt(new Date().getTime()) - (clickTimeS.getTime());
+            data.push(time);
+            option.series[0].data = data;
+            myChart.setOption(option, true);
+            $("#maen").text(Average(data));
+            $("body").css("background-color", "white");
+        }
+
+        // 求数组平均
+        function Average(data) {
+            var bot = 0;
+            for (var i = 0; i < data.length; i++) {
+                bot = bot + Number(data[i]);
+            }
+            return bot / data.length;
+        }
+    </script>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('vexm'));
+        option = {
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [],
+                type: 'line',
+                smooth: true
+            }]
+        };
+    </script>
+</body>
+
+</html>
