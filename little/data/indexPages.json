@@ -1,0 +1,12 @@
+[
+    {
+        "title": "二维码生成",
+        "url": "./pages/qrcode.html",
+        "icon": ""
+    },
+    {
+        "title": "反应速度测试",
+        "url": "./pages/extreme-test.html",
+        "icon": ""
+    }
+]
