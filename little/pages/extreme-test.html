@@ -64,7 +64,7 @@
             var time = parseInt(new Date().getTime() - clickTimeS.getTime());
             data.push(time);
             option.series[0].data = data;
-            option.title.text = "平均反应速度:" + Average(data) + "(ms)";
+            option.title.text = "平均反应速度:" + parseInt(Average(data)) + "(ms)";
             myChart.setOption(option, true);
             $("#maen").text(parseInt(Average(data)));
             $("body").css("background-color", "white");
