@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ddon/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/ddon/css/bootstrap/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/ddon/css/global.css">
+
+    <title>日记</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div>
+            <form id="formMain" class="padding-30" name="formMain">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">天气</label>
+                    <select id="select" class="form-select form-select-mg" name="weather"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">心情</label>
+                    <select id="select1" class="form-select form-select-mg" name="mood"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">内容</label>
+                    <textarea id="exampleFormControlTextarea1" class="form-control" rows="8" name="content"></textarea>
+                </div>
+                <button id="btnSaveDiary" type="button" class="btn btn-primary">保存</button>
+            </form>
+        </div>
+
+        <script src="/ddon/js/ddon.js"></script>
+        <script>
+            SelectInitByUrl("/app/diary/weather-type", "select");
+            SelectInitByUrl("/app/diary/mood-type", "select1");
+
+            request.get("/app/diary/today")
+                .then(function (response) {
+                    $("#select").val(response.weather)
+                    $("#select1").val(response.mood)
+                    $("#exampleFormControlTextarea1").val(response.content)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            document.getElementById("btnSaveDiary")
+                .addEventListener("click", function () {
+                    var seedData = $('#formMain').serialize();
+                    request.post("/app/diary", GetSeedData("post", seedData))
+                        .then(function (response) {
+                            ShowSuccess("保存成功");
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }, false)
+
+            function a() {
+
+            }
+
+        </script>
+    </div>
+
+</body>
+
+</html>

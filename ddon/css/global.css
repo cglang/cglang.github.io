@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 60%;
+  height: 100vh;
+  box-shadow: 0 0px 40px #ddd;
+}
+
+.padding-30 {
+  padding: 30px;
+}
+
+.alert-doon {
+  position: absolute;
+  width: 300px;
+  right: 30px;
+  top: 20px;
+}
