@@ -1,12 +1,21 @@
+/* 先考虑小屏幕的 再考虑大屏幕的 */
+
 body {
   margin: 0;
 }
 
 .main-container {
   margin: 0 auto;
-  width: 60%;
+  width: 100%;
   height: 100vh;
   box-shadow: 0 0px 40px #ddd;
+}
+
+/* 窗口至少为800像素时 */
+@media screen and (min-width: 800px) {
+  .main-container {    
+    width: 80%;
+  }
 }
 
 .padding-30 {

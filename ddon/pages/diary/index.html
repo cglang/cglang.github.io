@@ -10,29 +10,50 @@
     <link rel="stylesheet" href="/ddon/css/bootstrap/bootstrap.min.css">
 
     <link rel="stylesheet" href="/ddon/css/global.css">
+    <link rel="stylesheet" href="./css/diary.css">
 
-    <title>日记</title>
+    <title>随以日记</title>
 </head>
 
 <body>
     <div class="main-container">
-        <div>
-            <form id="formMain" class="padding-30" name="formMain">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">天气</label>
-                    <select id="select" class="form-select form-select-mg" name="weather"></select>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">心情</label>
-                    <select id="select1" class="form-select form-select-mg" name="mood"></select>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">内容</label>
-                    <textarea id="exampleFormControlTextarea1" class="form-control" rows="8" name="content"></textarea>
-                </div>
-                <button id="btnSaveDiary" type="button" class="btn btn-primary">保存</button>
-            </form>
-        </div>
+        <form id="formMain" class="padding-30" name="formMain">
+            <h2 class="diary-title">随以日记</h2>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">天气
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-brightness-low" viewBox="0 0 16 16">
+                        <path
+                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" />
+                    </svg>
+                </label>
+                <select id="select" class="form-select form-select-mg" name="weather"></select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">心情
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
+                    </svg>
+                </label>
+                <select id="select1" class="form-select form-select-mg" name="mood"></select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">内容
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
+                        <path
+                            d="M7.5 5.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L6 7l-.549.317a.5.5 0 1 0 .5.866l.549-.317V8.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L8 7l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V5.5zm-2 4.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
+                        <path
+                            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                    </svg>
+                </label>
+                <textarea id="exampleFormControlTextarea1" class="form-control" rows="8" name="content"></textarea>
+            </div>
+            <button id="btnSaveDiary" type="button" class="btn btn-primary">保存</button>
+        </form>
 
         <script src="/ddon/js/ddon.js"></script>
         <script>
@@ -41,9 +62,11 @@
 
             request.get("/app/diary/today")
                 .then(function (response) {
-                    $("#select").val(response.weather)
-                    $("#select1").val(response.mood)
-                    $("#exampleFormControlTextarea1").val(response.content)
+                    if (response) {
+                        $("#select").val(response.weather)
+                        $("#select1").val(response.mood)
+                        $("#exampleFormControlTextarea1").val(response.content)
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);

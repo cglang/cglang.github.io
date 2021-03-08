@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ddon/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/ddon/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="../../js/ddon.js"></script>
+
+    <title>记仇表情包生成工具</title>
+</head>
+
+<body>
+    <div class="mainPanel">
+        <div class="card main-card">
+            <form id="formMain" class="padding-30" name="formMain">
+                <div class="main-img">
+                    <img id="imgMain" src="https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646" alt="图片" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">天气</label>
+                    <select class="form-select" aria-label="Default select example" name="weather">
+                        <option value="晴">晴</option>
+                        <option value="多云">多云</option>
+                        <option value="阴">阴</option>
+                        <option value="小雨">小雨</option>
+                        <option value="大雨">大雨</option>
+                        <option value="暴雨">暴雨</option>
+                        <option value="雪">雪</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">文本</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="btn-generate">
+                        <button id="btnGenerate" type="button" class="btn btn-primary" style="width: 100%">生成</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("btnGenerate").addEventListener("click", function () {
+            let formData = $('#formMain').serialize();
+            let seedData = GetSeedData("post", formData);
+            if (seedData.text) {
+                request.post("/app/emoticon/generate", seedData)
+                    .then(function (response) {
+                        document.getElementById("imgMain").setAttribute("src", host + response.uri);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            } else {
+                ShowWarning("文本不能为空!");
+            }
+
+        })
+    </script>
+</body>
+
+</html>

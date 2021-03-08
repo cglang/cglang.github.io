@@ -1,3 +1,6 @@
+// 样式
+document.write('<link rel="stylesheet" href="/ddon/css/global.css"></link>');
+
 // 基础组件
 document.write("<script language=javascript src='/ddon/js/jquery/jquery.min.js'></script>");
 document.write("<script language=javascript src='/ddon/js/axios/axios.min.js'></script>");

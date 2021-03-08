@@ -1,0 +1,57 @@
+body {
+  font-family: "Microsoft YaHei", "Segoe UI", "Lucida Grande", Helvetica, Arial,
+    sans-serif;
+}
+
+.start-bg {
+  background: url("../images/index_bg3.jpg") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+
+.acrylic {
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.acrylic-sm {
+  padding-top: 20px;
+  background: rgba(62, 57, 57, 0.1);
+  backdrop-filter: saturate(140%) blur(1px);
+}
+
+.welcome-text {
+  padding-top: 20vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-main-title {
+  top: 30vh;
+  width: 100%;
+}
+
+.welcome-main-title h1 {
+  color: aliceblue;
+  font-size: 4rem;
+  text-align: center;
+
+  letter-spacing: 10px;
+}
+
+.welcome-main-des {
+  width: 100%;
+}
+
+.welcome-main-des p {
+  width: 100%;
+  color: aliceblue;
+  font-size: 1.2rem;
+  line-height: 80px;
+  text-align: center;
+  letter-spacing: 10px;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ddon/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="../../js/ddon.js"></script>
+
+    <title>LovQ</title>
+</head>
+
+<body>
+    <div>
+        <section class="w3l-coming-soon-page">
+            <div class="coming-page-info-6">
+                <div class="wrapper">
+                    <div class="coming-block">
+                        <h1>计时</h1>
+                        <p>我们认识多久了呢?</p>
+                        <div class="countdown">
+                            <div class="countdown__days">
+                                <div id="days" class="number"></div>
+                                <span class>Days</span>
+                            </div>
+
+                            <div class="countdown__hours">
+                                <div id="hours" class="number"></div>
+                                <span class>Hours</span>
+                            </div>
+
+                            <div class="countdown__minutes">
+                                <div id="minutes" class="number"></div>
+                                <span class>Minutes</span>
+                            </div>
+
+                            <div class="countdown__seconds">
+                                <div id="seconds" class="number"></div>
+                                <span class>Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /**
+         * 获取相差的天数
+         * @dateStart 开始的日期
+         * @dateEnd 结束的日期
+         */
+        function GetDifferenceDays(dateStart, dateEnd) {
+            var diffTime =
+                parseInt(dateEnd.getTime() / 1000) - dateStart.getTime() / 1000;
+            var timeDay = parseInt(diffTime / 60 / 60 / 24); //相差天数
+            return timeDay;
+        }
+        /**
+         * 获取相差的天数(不考虑小时)
+         * @dateStart 开始的日期
+         * @dateEnd 结束的日期
+         */
+        function GetDifferenceDaysIgnore(dateStart, dateEnd) {
+            dateStart = GetYMD(dateStart);
+            dateEnd = GetYMD(dateEnd);
+            var diffTime =
+                parseInt(dateEnd.getTime() / 1000) - dateStart.getTime() / 1000;
+            var timeDay = parseInt(diffTime / 60 / 60 / 24); //相差天数
+            return timeDay;
+        }
+        /**
+         * 获取相差的小时数
+         * @dateStart 开始的日期
+         * @dateEnd 结束的日期
+         */
+        function GetDifferenceHours(dateStart, dateEnd) {
+            var diffTime =
+                parseInt(dateEnd.getTime() / 1000) - dateStart.getTime() / 1000;
+            var timeHour = parseInt(diffTime / 60 / 60); //相差小时
+            return timeHour;
+        }
+        /**
+         * 获取相差的分钟数
+         * @dateStart 开始的日期
+         * @dateEnd 结束的日期
+         */
+        function GetDifferenceMinutes(dateStart, dateEnd) {
+            var diffTime =
+                parseInt(dateEnd.getTime() / 1000) - dateStart.getTime() / 1000;
+            var timeMinutes = parseInt(diffTime / 60); //相差分钟
+            return timeMinutes;
+        }
+        /**
+         * 获取一个 天-时-分-秒 格式的json串
+         * @dateStart 开始的日期
+         * @dateEnd 结束的日期
+         */
+        function GetDetailDate(dateStart, dateEnd) {
+            var dayT = GetDifferenceDays(dateStart, dateEnd);
+
+            // 某日那天的秒数
+            var endS =
+                dateEnd.getHours() * 60 * 60 +
+                dateEnd.getMinutes() * 60 +
+                dateEnd.getSeconds();
+            var startS =
+                dateStart.getHours() * 60 * 60 +
+                dateStart.getMinutes() * 60 +
+                dateStart.getSeconds();
+
+            endS = endS > startS ? endS : endS + 24 * 60 * 60;
+
+            var secondT = (endS - startS) % 60;
+            var minuteT = parseInt((endS - startS - secondT) / 60) % 60;
+            var hourT = parseInt((endS - startS - secondT) / 60 / 60) % 24;
+
+            var dateText = {
+                day: dayT,
+                hour: hourT,
+                minute: minuteT,
+                second: secondT,
+            };
+            return dateText;
+        }
+        /**
+         * 去除一个日期的时分秒 即获取某个日期的 0:0:0 的时间对象
+         * @date 日期对象
+         */
+        function GetYMD(date) {
+            if (date) {
+                return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            }
+        }
+        /**
+         * 获取今年的最后一天的时间对象
+         */
+        function GetLastDayDate() {
+            return new Date(new Date().getFullYear() + "-12-31");
+        }
+        /**
+         * 获取日期所在年份的第几天
+         */
+        function GetDayIndex(date) {
+            return (
+                Math.ceil(
+                    (date - new Date(date.getFullYear().toString())) /
+                    (24 * 60 * 60 * 1000)
+                ) + 1
+            );
+        }
+    </script>
+
+    <script>
+        let testDay = new Date("2020-11-24 22:22:12");
+        let nyr;
+
+        SetValue();
+
+        setInterval(() => {
+            SetValue();
+        }, 1000);
+
+        function SetValue() {
+            nyr = GetDetailDate(testDay, new Date());
+            document.getElementById("days").innerHTML = nyr.day;
+            document.getElementById("hours").innerHTML = nyr.hour;
+            document.getElementById("minutes").innerHTML = nyr.minute;
+            document.getElementById("seconds").innerHTML = nyr.second;
+        }
+    </script>
+</body>
+
+</html>

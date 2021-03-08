@@ -1,0 +1,42 @@
+.space {
+  margin: 10px;
+}
+
+.labletext {
+  padding: 0 5px;
+}
+
+.mainPanel {
+  padding: 30px;
+  height: 100vh;
+}
+
+.main-card {
+  margin: 0 auto;
+  height: 100%;
+}
+
+.main-img {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.main-img img {
+    width: 100%;
+  }
+
+.btn-generate {
+  margin: 0 auto;
+  margin-top: 80px;
+  width: 80%;
+}
+
+@media (min-width: 860px) {
+  .main-card {
+    width: 820px;
+  }
+
+  .btn-generate {
+    width: 600px;
+  }
+}

@@ -35,15 +35,16 @@ function GetSeedData(type, value) {
 }
 
 function ShowWarning(text) {
-    $("#warning").html("<strong>警告:</strong>" + text);
-    $("#warning").addClass("show");
-    setTimeout(function () {
-        $("#warning").removeClass("show");
-    }, 1000);
+    ShowAlert("warning", text);
 }
 
 function ShowSuccess(text) {
+    ShowAlert("succes", text);
+}
+
+function ShowAlert(type, text) {
     let ac = document.getElementById("alert-container");
+
     if (!ac) {
         let elementDiv = document.createElement("div");
         elementDiv.id = "alert-container";
@@ -51,10 +52,24 @@ function ShowSuccess(text) {
         document.body.appendChild(elementDiv);
         ac = document.getElementById("alert-container");
     }
-
     let alert = document.createElement("div");
-    alert.className = "alert alert-success alert-dismissible fade show"
-    alert.innerHTML = "<strong>成功：</strong>" + text;
+
+    switch (type) {
+        case "succes":
+            alert.innerHTML = "<strong>成功：</strong>" + text;
+            alert.className = "alert alert-success alert-dismissible fade show";
+            break;
+        case "warning":
+            alert.innerHTML = "<strong>警告：</strong>" + text;
+            alert.className = "alert alert-warning alert-dismissible fade show";
+            break;
+        default:
+            alert.innerHTML = "<strong>成功：</strong>" + text;
+            alert.className = "alert alert-success alert-dismissible fade show";
+            break;
+    }
+
+
     ac.appendChild(alert);
     setTimeout(function () {
         ac.removeChild(alert);

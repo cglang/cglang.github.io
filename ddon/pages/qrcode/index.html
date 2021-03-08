@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ddon/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/ddon/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- js 库开源地址 https://github.com/davidshimjs/qrcodejs -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <title>二维码生成</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <h2>二维码生成</h2>
+        <div class="card p20">
+            <div class="mb-3">
+                <label>二维码内容</label>
+                <input type="text" class="form-control" id="qrcodeText" aria-describedby="emailHelp" value="Hello">
+            </div>
+            <div class="mb-3">
+                <label>二维码</label>
+                <div class="p10" id="qrcode"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                RefreshQrCode();
+            })
+            $("#qrcodeText").on("keyup", function () {
+                $("#qrcode").html("");
+                RefreshQrCode();
+            })
+            function RefreshQrCode() {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: $("#qrcodeText").val(),
+                    width: 200,
+                    height: 200,
+                    colorDark: "#111111",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        </script>
+</body>
+
+</html>
