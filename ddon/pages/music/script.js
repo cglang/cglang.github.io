@@ -121,7 +121,7 @@ new Vue({
           // 歌曲url
           await axios.get('https://www.cglang.com:28/song/url?id=' + id)
             .then((res) => {
-              music.source = res.data.data[0].url
+              music.source = res.data.data[0].url.replace("http://","https://")
             });
         });
       return music;
