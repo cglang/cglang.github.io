@@ -113,13 +113,13 @@ new Vue({
     async musicInit(id) {
       var music = { favorited: true }
       // 歌曲信息      
-      await axios.get('http://47.105.149.144:3000/song/detail?ids=' + id)
+      await axios.get('https://www.cglang.com:28/song/detail?ids=' + id)
         .then(async (res) => {
           music.name = res.data.songs[0].name;
           music.artist = res.data.songs[0].ar[0].name;
           music.cover = res.data.songs[0].al.picUrl;
           // 歌曲url
-          await axios.get('http://47.105.149.144:3000/song/url?id=' + id)
+          await axios.get('https://www.cglang.com:28/song/url?id=' + id)
             .then((res) => {
               music.source = res.data.data[0].url
             });
