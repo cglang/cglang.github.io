@@ -17,7 +17,8 @@
         <div class="player-cover">
           <transition-group :name="transitionName">
             <div class="player-cover__item" v-if="$index === currentTrackIndex"
-              :style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks" :key="$index"></div>
+              :style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks" :key="$index">
+            </div>
           </transition-group>
         </div>
         <div class="player-controls">
@@ -159,10 +160,9 @@
       </symbol>
     </defs>
   </svg>
-
   <script src="../../js/vue/vue.min.js"></script>
   <script src="../../js/axios/axios.min.js"></script>
-  <script src="./script.js"></script>  
+  <script src="./script.js"></script>
 
 </body>
 
