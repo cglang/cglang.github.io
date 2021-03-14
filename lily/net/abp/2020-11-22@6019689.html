@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ABP 中是如何生成连续GUID的 | Stray Stone</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/lily/assets/css/0.styles.a8478412.css" as="style"><link rel="preload" href="/lily/assets/js/app.47c0effe.js" as="script"><link rel="preload" href="/lily/assets/js/2.d557c063.js" as="script"><link rel="preload" href="/lily/assets/js/24.6ab95118.js" as="script"><link rel="prefetch" href="/lily/assets/js/10.5b1f9f7c.js"><link rel="prefetch" href="/lily/assets/js/11.40a8368c.js"><link rel="prefetch" href="/lily/assets/js/12.9e3895d6.js"><link rel="prefetch" href="/lily/assets/js/13.9d06cbbe.js"><link rel="prefetch" href="/lily/assets/js/14.438719b3.js"><link rel="prefetch" href="/lily/assets/js/15.3872bd1f.js"><link rel="prefetch" href="/lily/assets/js/16.139f287f.js"><link rel="prefetch" href="/lily/assets/js/17.9aab4fe1.js"><link rel="prefetch" href="/lily/assets/js/18.38ac1c74.js"><link rel="prefetch" href="/lily/assets/js/19.3c38ca9b.js"><link rel="prefetch" href="/lily/assets/js/20.d7ddf415.js"><link rel="prefetch" href="/lily/assets/js/21.652ba79f.js"><link rel="prefetch" href="/lily/assets/js/22.3450ecb7.js"><link rel="prefetch" href="/lily/assets/js/23.a0f58129.js"><link rel="prefetch" href="/lily/assets/js/25.8db95738.js"><link rel="prefetch" href="/lily/assets/js/26.7fa68c2d.js"><link rel="prefetch" href="/lily/assets/js/27.c78d7151.js"><link rel="prefetch" href="/lily/assets/js/28.95ea3b13.js"><link rel="prefetch" href="/lily/assets/js/29.e32b4e4f.js"><link rel="prefetch" href="/lily/assets/js/3.7435d281.js"><link rel="prefetch" href="/lily/assets/js/30.eff516c1.js"><link rel="prefetch" href="/lily/assets/js/4.e05c873c.js"><link rel="prefetch" href="/lily/assets/js/5.f3e6ed41.js"><link rel="prefetch" href="/lily/assets/js/6.498ab014.js"><link rel="prefetch" href="/lily/assets/js/7.82569640.js"><link rel="prefetch" href="/lily/assets/js/8.f1e9ba36.js"><link rel="prefetch" href="/lily/assets/js/9.67cb04f0.js">
+    <link rel="stylesheet" href="/lily/assets/css/0.styles.a8478412.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lily/" class="home-link router-link-active"><!----> <span class="site-name">Stray Stone</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=".Net" class="dropdown-title"><span class="title">.Net</span> <span class="arrow down"></span></button> <button type="button" aria-label=".Net" class="mobile-dropdown-title"><span class="title">.Net</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lily/net/abp/" class="nav-link router-link-active">
+  ABP
+</a></li><li class="dropdown-item"><!----> <a href="/lily/net/" class="nav-link router-link-active">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="/lily/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=".Net" class="dropdown-title"><span class="title">.Net</span> <span class="arrow down"></span></button> <button type="button" aria-label=".Net" class="mobile-dropdown-title"><span class="title">.Net</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lily/net/abp/" class="nav-link router-link-active">
+  ABP
+</a></li><li class="dropdown-item"><!----> <a href="/lily/net/" class="nav-link router-link-active">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="/lily/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/lily/net/abp/" class="sidebar-heading clickable router-link-active open"><span>ABP VNext</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/lily/net/abp/2020-11-02@4301638.html" class="sidebar-link">安装 ABP CLI 以及常用命令</a></li><li><a href="/lily/net/abp/2020-11-03@4404411.html" class="sidebar-link">ABP 框架 MVC 应用程序的项目结构</a></li><li><a href="/lily/net/abp/2020-11-19@5883806.html" class="sidebar-link">ABP 中的仓储实现</a></li><li><a href="/lily/net/abp/2020-11-22@6019581.html" class="sidebar-link">ABP 的模块加载机制</a></li><li><a href="/lily/net/abp/2020-11-22@6019689.html" aria-current="page" class="active sidebar-link">ABP 中是如何生成连续GUID的</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-11-22@6019689.html#guid-生成" class="sidebar-link">GUID 生成</a></li><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-11-22@6019689.html#iguidgenerator-接口服务" class="sidebar-link">IGuidGenerator 接口服务</a></li><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-11-22@6019689.html#配置" class="sidebar-link">配置</a></li><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-11-22@6019689.html#看源码" class="sidebar-link">看源码</a></li></ul></li><li><a href="/lily/net/abp/2020-11-29@6641904.html" class="sidebar-link">ABP 的依赖注入及相关配置</a></li><li><a href="/lily/net/abp/2020-12-01@6803746.html" class="sidebar-link">ABP 的虚拟文件系统</a></li><li><a href="/lily/net/abp/2020-12-01@6815002.html" class="sidebar-link">ABP 的数据过滤器</a></li><li><a href="/lily/net/abp/2020-12-25@8859106.html" class="sidebar-link">ABP 的异常处理机制</a></li><li><a href="/lily/net/abp/2020-12-30@9310691.html" class="sidebar-link">ABP 中获取当前用户相关的信息</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="abp-中是如何生成连续guid的"><a href="#abp-中是如何生成连续guid的" class="header-anchor">#</a> ABP 中是如何生成连续GUID的</h1> <h2 id="guid-生成"><a href="#guid-生成" class="header-anchor">#</a> GUID 生成</h2> <p>GUID是数据库管理系统中使用的常见主键类型。并且 ABP 框架假定用户 ID 始终是 <code>GUID</code> 类型。</p> <h2 id="iguidgenerator-接口服务"><a href="#iguidgenerator-接口服务" class="header-anchor">#</a> IGuidGenerator 接口服务</h2> <p>GUID的最主要的问题是默认情况下它不是连续的。 当将 <code>GUID</code> 用作主键并将其设置为表的索引（默认设置）时，会在插入时带来严重的性能问题（因为插入新记录可能需要对现有记录进行重新排序）。</p> <p>所以，不要使用 <code>Guid.NewGuid()</code> 为您的实体创建ID。ABP框架提供 <code>IGuidGenerator</code> 服务用于创建连续的 <code>GUID</code>。</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Threading<span class="token punctuation">.</span>Tasks</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>DependencyInjection</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>Domain<span class="token punctuation">.</span>Repositories</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>Guids</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">AbpDemo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyProductService</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ITransientDependency</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">IRepository<span class="token punctuation">&lt;</span>Product<span class="token punctuation">,</span> Guid<span class="token punctuation">&gt;</span></span> _productRepository<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">IGuidGenerator</span> _guidGenerator<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">MyProductService</span><span class="token punctuation">(</span><span class="token class-name">IRepository<span class="token punctuation">&lt;</span>Product<span class="token punctuation">,</span> Guid<span class="token punctuation">&gt;</span></span> productRepository<span class="token punctuation">,</span> <span class="token class-name">IGuidGenerator</span> guidGenerator<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _productRepository <span class="token operator">=</span> productRepository<span class="token punctuation">;</span>
+            _guidGenerator <span class="token operator">=</span> guidGenerator<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task</span> <span class="token function">TestCreateGUIDAsync</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> productName<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name">Guid</span> guid <span class="token operator">=</span> _guidGenerator<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>IGuidGenerator.Create() 用于创建连续的 <code>Guid</code>。</li></ul> <h2 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h2> <h3 id="abpsequentialguidgeneratoroptions"><a href="#abpsequentialguidgeneratoroptions" class="header-anchor">#</a> AbpSequentialGuidGeneratorOptions</h3> <p><code>AbpSequentialGuidGeneratorOptions</code> 是用于配置顺序GUID生成的选项类，它具有一个枚举类型属性。
+- <code>DefaultSequentialGuidType</code>（类型为 <code>SequentialGuidType</code> 的枚举）：生成GUID值时使用的策略。</p> <p>数据库在处理 <code>GUID</code> 时会有所不同，因此您应根据指定数据库进行设置
+- <code>SequentialAtEnd</code> SQL Server
+- <code>SequentialAsString</code> MySQL or PostgreSQL
+- <code>SequentialAsBinary</code> Oracle</p> <p>在模块的 <code>ConfigureServices</code> 中进行配置</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token generic-method"><span class="token function">Configure</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>AbpSequentialGuidGeneratorOptions<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span>options <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+    options<span class="token punctuation">.</span>DefaultSequentialGuidType <span class="token operator">=</span> SequentialGuidType<span class="token punctuation">.</span>SequentialAsBinary<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr> <h2 id="看源码"><a href="#看源码" class="header-anchor">#</a> 看源码</h2> <p>源码位置 <code>Volo.Abp.Guids\Volo\Abp\Guids\SequentialGuidGenerator.cs</code></p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token return-type class-name">Guid</span> <span class="token function">Create</span><span class="token punctuation">(</span><span class="token class-name">SequentialGuidType</span> guidType<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> randomBytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">byte</span></span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    RandomNumberGenerator<span class="token punctuation">.</span><span class="token function">GetBytes</span><span class="token punctuation">(</span>randomBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 先生成 10 字节的随机内容</span>
+
+    <span class="token class-name"><span class="token keyword">long</span></span> timestamp <span class="token operator">=</span> DateTime<span class="token punctuation">.</span>UtcNow<span class="token punctuation">.</span>Ticks <span class="token operator">/</span> <span class="token number">10000L</span><span class="token punctuation">;</span><span class="token comment">// 获取当前时间戳的值 / 10000</span>
+
+    <span class="token class-name"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> timestampBytes <span class="token operator">=</span> BitConverter<span class="token punctuation">.</span><span class="token function">GetBytes</span><span class="token punctuation">(</span>timestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>BitConverter<span class="token punctuation">.</span>IsLittleEndian<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Array<span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span>timestampBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> guidBytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">byte</span></span><span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 用于存储最终生成 Guid 的数组</span>
+
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>guidType<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// 可以看到 MySQL、PostgreSQL、Oracle 他们三个对 Guid 的处理方式是一样的</span>
+        <span class="token keyword">case</span> SequentialGuidType<span class="token punctuation">.</span>SequentialAsString<span class="token punctuation">:</span>
+        <span class="token keyword">case</span> SequentialGuidType<span class="token punctuation">.</span>SequentialAsBinary<span class="token punctuation">:</span>
+
+            Buffer<span class="token punctuation">.</span><span class="token function">BlockCopy</span><span class="token punctuation">(</span>timestampBytes<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> guidBytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Buffer<span class="token punctuation">.</span><span class="token function">BlockCopy</span><span class="token punctuation">(</span>randomBytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> guidBytes<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>guidType <span class="token operator">==</span> SequentialGuidType<span class="token punctuation">.</span>SequentialAsString <span class="token operator">&amp;&amp;</span> BitConverter<span class="token punctuation">.</span>IsLittleEndian<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Array<span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span>guidBytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Array<span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span>guidBytes<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment">// SQL Server 独出一家</span>
+        <span class="token keyword">case</span> SequentialGuidType<span class="token punctuation">.</span>SequentialAtEnd<span class="token punctuation">:</span>
+
+            Buffer<span class="token punctuation">.</span><span class="token function">BlockCopy</span><span class="token punctuation">(</span>randomBytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> guidBytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Buffer<span class="token punctuation">.</span><span class="token function">BlockCopy</span><span class="token punctuation">(</span>timestampBytes<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> guidBytes<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Guid</span><span class="token punctuation">(</span>guidBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>他的生成方式就是一个随机的 10 byte 的内容与当前时间 6 byte 相关的一个拼接，最终生成一个二进制长度为 128 位的 Guid。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/lily/net/abp/2020-11-22@6019581.html" class="prev">
+        ABP 的模块加载机制
+      </a></span> <span class="next"><a href="/lily/net/abp/2020-11-29@6641904.html">
+        ABP 的依赖注入及相关配置
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/lily/assets/js/app.47c0effe.js" defer></script><script src="/lily/assets/js/2.d557c063.js" defer></script><script src="/lily/assets/js/24.6ab95118.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ABP 中获取当前用户相关的信息 | Stray Stone</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/lily/assets/css/0.styles.a8478412.css" as="style"><link rel="preload" href="/lily/assets/js/app.47c0effe.js" as="script"><link rel="preload" href="/lily/assets/js/2.d557c063.js" as="script"><link rel="preload" href="/lily/assets/js/29.e32b4e4f.js" as="script"><link rel="prefetch" href="/lily/assets/js/10.5b1f9f7c.js"><link rel="prefetch" href="/lily/assets/js/11.40a8368c.js"><link rel="prefetch" href="/lily/assets/js/12.9e3895d6.js"><link rel="prefetch" href="/lily/assets/js/13.9d06cbbe.js"><link rel="prefetch" href="/lily/assets/js/14.438719b3.js"><link rel="prefetch" href="/lily/assets/js/15.3872bd1f.js"><link rel="prefetch" href="/lily/assets/js/16.139f287f.js"><link rel="prefetch" href="/lily/assets/js/17.9aab4fe1.js"><link rel="prefetch" href="/lily/assets/js/18.38ac1c74.js"><link rel="prefetch" href="/lily/assets/js/19.3c38ca9b.js"><link rel="prefetch" href="/lily/assets/js/20.d7ddf415.js"><link rel="prefetch" href="/lily/assets/js/21.652ba79f.js"><link rel="prefetch" href="/lily/assets/js/22.3450ecb7.js"><link rel="prefetch" href="/lily/assets/js/23.a0f58129.js"><link rel="prefetch" href="/lily/assets/js/24.6ab95118.js"><link rel="prefetch" href="/lily/assets/js/25.8db95738.js"><link rel="prefetch" href="/lily/assets/js/26.7fa68c2d.js"><link rel="prefetch" href="/lily/assets/js/27.c78d7151.js"><link rel="prefetch" href="/lily/assets/js/28.95ea3b13.js"><link rel="prefetch" href="/lily/assets/js/3.7435d281.js"><link rel="prefetch" href="/lily/assets/js/30.eff516c1.js"><link rel="prefetch" href="/lily/assets/js/4.e05c873c.js"><link rel="prefetch" href="/lily/assets/js/5.f3e6ed41.js"><link rel="prefetch" href="/lily/assets/js/6.498ab014.js"><link rel="prefetch" href="/lily/assets/js/7.82569640.js"><link rel="prefetch" href="/lily/assets/js/8.f1e9ba36.js"><link rel="prefetch" href="/lily/assets/js/9.67cb04f0.js">
+    <link rel="stylesheet" href="/lily/assets/css/0.styles.a8478412.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lily/" class="home-link router-link-active"><!----> <span class="site-name">Stray Stone</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=".Net" class="dropdown-title"><span class="title">.Net</span> <span class="arrow down"></span></button> <button type="button" aria-label=".Net" class="mobile-dropdown-title"><span class="title">.Net</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lily/net/abp/" class="nav-link router-link-active">
+  ABP
+</a></li><li class="dropdown-item"><!----> <a href="/lily/net/" class="nav-link router-link-active">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="/lily/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=".Net" class="dropdown-title"><span class="title">.Net</span> <span class="arrow down"></span></button> <button type="button" aria-label=".Net" class="mobile-dropdown-title"><span class="title">.Net</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lily/net/abp/" class="nav-link router-link-active">
+  ABP
+</a></li><li class="dropdown-item"><!----> <a href="/lily/net/" class="nav-link router-link-active">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="/lily/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/lily/net/abp/" class="sidebar-heading clickable router-link-active open"><span>ABP VNext</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/lily/net/abp/2020-11-02@4301638.html" class="sidebar-link">安装 ABP CLI 以及常用命令</a></li><li><a href="/lily/net/abp/2020-11-03@4404411.html" class="sidebar-link">ABP 框架 MVC 应用程序的项目结构</a></li><li><a href="/lily/net/abp/2020-11-19@5883806.html" class="sidebar-link">ABP 中的仓储实现</a></li><li><a href="/lily/net/abp/2020-11-22@6019581.html" class="sidebar-link">ABP 的模块加载机制</a></li><li><a href="/lily/net/abp/2020-11-22@6019689.html" class="sidebar-link">ABP 中是如何生成连续GUID的</a></li><li><a href="/lily/net/abp/2020-11-29@6641904.html" class="sidebar-link">ABP 的依赖注入及相关配置</a></li><li><a href="/lily/net/abp/2020-12-01@6803746.html" class="sidebar-link">ABP 的虚拟文件系统</a></li><li><a href="/lily/net/abp/2020-12-01@6815002.html" class="sidebar-link">ABP 的数据过滤器</a></li><li><a href="/lily/net/abp/2020-12-25@8859106.html" class="sidebar-link">ABP 的异常处理机制</a></li><li><a href="/lily/net/abp/2020-12-30@9310691.html" aria-current="page" class="active sidebar-link">ABP 中获取当前用户相关的信息</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-12-30@9310691.html#icurrentuser" class="sidebar-link">ICurrentUser</a></li><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-12-30@9310691.html#icurrentprincipalaccessor" class="sidebar-link">ICurrentPrincipalAccessor</a></li><li class="sidebar-sub-header"><a href="/lily/net/abp/2020-12-30@9310691.html#abpclaimtypes" class="sidebar-link">AbpClaimTypes</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="abp-中获取当前用户相关的信息"><a href="#abp-中获取当前用户相关的信息" class="header-anchor">#</a> ABP 中获取当前用户相关的信息</h1> <p>当前用户是指当前请求相关的用户。由于在 Web 程序中当前用户的信息的使用是非常常见的， ABP 对此做了一次封装。</p> <h2 id="icurrentuser"><a href="#icurrentuser" class="header-anchor">#</a> ICurrentUser</h2> <p><code>ICurrentUser</code> 是获取当前活动用户信息的主要服务。</p> <p>通过构造函数注入的方式使用该服务</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>DependencyInjection</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>Users</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">AbpDemo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyService</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ITransientDependency</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">ICurrentUser</span> _currentUser<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">MyService</span><span class="token punctuation">(</span><span class="token class-name">ICurrentUser</span> currentUser<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _currentUser <span class="token operator">=</span> currentUser<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name">Guid<span class="token punctuation">?</span></span> userId <span class="token operator">=</span> _currentUser<span class="token punctuation">.</span>Id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>公共基类已将此服务作为基属性注入。比如</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Volo<span class="token punctuation">.</span>Abp<span class="token punctuation">.</span>Application<span class="token punctuation">.</span>Services</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">AbpDemo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyAppService</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ApplicationService</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name">Guid<span class="token punctuation">?</span></span> userId <span class="token operator">=</span> CurrentUser<span class="token punctuation">.</span>Id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="属性-properties"><a href="#属性-properties" class="header-anchor">#</a> 属性(Properties)</h3> <ul><li><strong>IsAuthenticated</strong> (bool) ：是否已登录认证。</li> <li><strong>Id</strong> (Guid?)：获取用户的Id，未登录时返回 <code>null</code> 。</li> <li><strong>UserName</strong> (string)：获取用户的名称，未登录时返回 <code>null</code> 。</li> <li><strong>TenantId</strong> (Guid?)：获取用户租户的Id，未分配租户时返回 <code>null</code>。</li> <li><strong>Email</strong> (string)：获取用户的 Email。</li> <li><strong>EmailVerified</strong> (bool)：是否已验证电子邮箱。</li> <li><strong>PhoneNumber</strong> (string)：获取用户手机号码。</li> <li><strong>PhoneNumberVerified</strong> (bool)：是否已验证手机号。</li> <li><strong>Roles</strong> (string[])：获取当前用户拥有的角色名。</li></ul> <h3 id="方法-methods"><a href="#方法-methods" class="header-anchor">#</a> 方法(Methods)</h3> <p><code>ICurrentUser</code> 是在 <code>ICurrentPrincipalAccessor</code> 基础上对 <code>claims</code> 处理实现的。上述所有属性实际上都是从当前经过身份验证的用户的 <code>claims</code> 中检索得到的。<code>ICurrentUser</code> 对于检索功能做了些封装。</p> <ul><li><strong>FindClaim</strong>: 获取具有给定名称的 <code>Claim</code>。如果未找到，则返回 <code>null</code>。</li> <li><strong>FindClaims</strong>: 获取具有给定名称的所有 <code>Claim</code>（允许多个具有相同的名称）。</li> <li><strong>GetAllClaims</strong>: 获取所有的 <code>Claim</code>。</li> <li><strong>IsInRole</strong>: A shortcut method to check if the current user is in the specified role.</li></ul> <p>除了这些标准方法外，还有一些扩展方法：</p> <ul><li><strong>FindClaimValue</strong>: 获取具有给定名称的 <code>Claim</code> 的值，如果找不到则为 <code>null</code> 。它有一个泛型重载将值强制转换为特定类型。</li> <li><strong>GetId</strong>: 返回当前用户的Id。如果当前用户没有登录会抛出异常。</li></ul> <h2 id="icurrentprincipalaccessor"><a href="#icurrentprincipalaccessor" class="header-anchor">#</a> ICurrentPrincipalAccessor</h2> <p><code>ICurrentPrincipalAccessor</code> 是在需要当前用户的主体时使用的服务。</p> <p>对于 <code>Web</code> 应用程序，它获取当前用户的 <code>HttpContext</code> 属性。对于非web应用程序，它返回当前主线程.。</p> <blockquote><p>通常不需要这个低级别的服务</p></blockquote> <p>其接口声明内容也极其简单</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ICurrentPrincipalAccessor</span>
+<span class="token punctuation">{</span>
+    <span class="token return-type class-name">ClaimsPrincipal</span> Principal <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token return-type class-name">IDisposable</span> <span class="token function">Change</span><span class="token punctuation">(</span><span class="token class-name">ClaimsPrincipal</span> principal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>Change</code> 方法用于更改当前用户主体内容</p> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyAppService</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ApplicationService</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">ICurrentPrincipalAccessor</span> _currentPrincipalAccessor<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">MyAppService</span><span class="token punctuation">(</span><span class="token class-name">ICurrentPrincipalAccessor</span> currentPrincipalAccessor<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _currentPrincipalAccessor <span class="token operator">=</span> currentPrincipalAccessor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> newPrincipal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ClaimsPrincipal</span><span class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ClaimsIdentity</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim</span><span class="token punctuation">(</span>AbpClaimTypes<span class="token punctuation">.</span>UserId<span class="token punctuation">,</span> Guid<span class="token punctuation">.</span><span class="token function">NewGuid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim</span><span class="token punctuation">(</span>AbpClaimTypes<span class="token punctuation">.</span>UserName<span class="token punctuation">,</span> <span class="token string">&quot;john&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim</span><span class="token punctuation">(</span><span class="token string">&quot;MyCustomCliam&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;42&quot;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">using</span> <span class="token punctuation">(</span>_currentPrincipalAccessor<span class="token punctuation">.</span><span class="token function">Change</span><span class="token punctuation">(</span>newPrincipal<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> userName <span class="token operator">=</span> CurrentUser<span class="token punctuation">.</span>UserName<span class="token punctuation">;</span> <span class="token comment">//returns &quot;john&quot;</span>
+            <span class="token comment">//...</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="abpclaimtypes"><a href="#abpclaimtypes" class="header-anchor">#</a> AbpClaimTypes</h2> <p><code>AbpClaimTypes</code> 是一个静态类，用于定义标准的 <code>Claim</code> 名称，其内大部分引用的 <code>ClaimTypes</code> 类中的常量值。</p> <blockquote><p><code>AbpClaimTypes</code> 是 ABP 定义的，<code>ClaimTypes</code> 是微软定义的。</p></blockquote> <hr> <p>https://docs.abp.io/en/abp/latest/CurrentUser</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/lily/net/abp/2020-12-25@8859106.html" class="prev">
+        ABP 的异常处理机制
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/lily/assets/js/app.47c0effe.js" defer></script><script src="/lily/assets/js/2.d557c063.js" defer></script><script src="/lily/assets/js/29.e32b4e4f.js" defer></script>
+  </body>
+</html>
