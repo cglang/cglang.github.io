@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>文件和目录管理 | Stray Stone</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/lily/assets/css/0.styles.0a77d4b4.css" as="style"><link rel="preload" href="/lily/assets/js/app.0a322e39.js" as="script"><link rel="preload" href="/lily/assets/js/2.d557c063.js" as="script"><link rel="preload" href="/lily/assets/js/14.438719b3.js" as="script"><link rel="prefetch" href="/lily/assets/js/10.1540aa68.js"><link rel="prefetch" href="/lily/assets/js/11.40a8368c.js"><link rel="prefetch" href="/lily/assets/js/12.20b1e4c1.js"><link rel="prefetch" href="/lily/assets/js/13.ebacc1be.js"><link rel="prefetch" href="/lily/assets/js/15.38e0daa0.js"><link rel="prefetch" href="/lily/assets/js/16.139f287f.js"><link rel="prefetch" href="/lily/assets/js/17.9aab4fe1.js"><link rel="prefetch" href="/lily/assets/js/18.91e0ab1a.js"><link rel="prefetch" href="/lily/assets/js/19.29d5db68.js"><link rel="prefetch" href="/lily/assets/js/3.be73de15.js"><link rel="prefetch" href="/lily/assets/js/4.09ee8a39.js"><link rel="prefetch" href="/lily/assets/js/5.30fca801.js"><link rel="prefetch" href="/lily/assets/js/6.498ab014.js"><link rel="prefetch" href="/lily/assets/js/7.82569640.js"><link rel="prefetch" href="/lily/assets/js/8.0bda9c09.js"><link rel="prefetch" href="/lily/assets/js/9.84c3aff7.js">
+    <link rel="stylesheet" href="/lily/assets/css/0.styles.0a77d4b4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lily/" class="home-link router-link-active"><!----> <span class="site-name">Stray Stone</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/lily/net/" class="nav-link">
+  .Net
+</a></div><div class="nav-item"><a href="/lily/linux/" class="nav-link router-link-active">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/lily/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/lily/net/" class="nav-link">
+  .Net
+</a></div><div class="nav-item"><a href="/lily/linux/" class="nav-link router-link-active">
+  Linux
+</a></div><div class="nav-item"><a href="/lily/docker/" class="nav-link">
+  Docker
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/lily/linux/" class="sidebar-heading clickable router-link-active open"><span>Linux基础</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/lily/linux/basic/00-info.html" class="sidebar-link">Linux 简介</a></li><li><a href="/lily/linux/basic/01-start.html" class="sidebar-link">开始</a></li><li><a href="/lily/linux/basic/install-wsl.html" class="sidebar-link">安装 WSL 并升级为 WSL2</a></li><li><a href="/lily/linux/basic/02-file-content.html" aria-current="page" class="active sidebar-link">文件和目录管理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/lily/linux/basic/03-remote.html" class="sidebar-link">使用 SSH 远程连接登录 Linux</a></li></ul></section></li><li><a href="/lily/linux/jnjx/" class="sidebar-link">Linux进阶</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="文件和目录管理"><a href="#文件和目录管理" class="header-anchor">#</a> 文件和目录管理</h1> <p>在 Linux 操作系统中，所有的文件和目录都被组织成以一个根节点“/”开始的倒置的树状结构，如下示例。</p> <div class="language- extra-class"><pre class="language-text"><code>/
+├── bin
+├── boot
+├── etc
+├── home
+│   └── cglang
+├── lib
+├── srv
+├── sys
+│   ├── block
+│   ├── bus
+│   ├── class
+│   ├── dev
+│   ├── devices
+│   ├── firmware
+│   ├── fs
+│   ├── kernel
+│   └── module
+├── tmp
+├── usr
+└── var
+</code></pre></div><h3 id="ls-命令"><a href="#ls-命令" class="header-anchor">#</a> ls 命令</h3> <p>我们可使用 <code>ls</code> 命令来查看某目录下的文件以及文件夹</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ls</span>              <span class="token comment"># 查看当前工作目录</span>
+<span class="token function">ls</span> /            <span class="token comment"># 查看根目录</span>
+<span class="token function">ls</span> -all         <span class="token comment"># 查看目录下包括隐藏文件和目录</span>
+<span class="token function">ls</span> -list        <span class="token comment"># 查看当前目录的的列表形式</span>
+<span class="token function">ls</span> -l           <span class="token comment"># ls -list 的其简写</span>
+ll              <span class="token comment"># ls -list -all 的简写</span>
+</code></pre></div><blockquote><p>其他用法可使用 <code>ls --help</code> 查看详细</p></blockquote> <h3 id="cd-命令"><a href="#cd-命令" class="header-anchor">#</a> cd 命令</h3> <p>使用 <code>cd</code> 命令进行工作目录的切换</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /            <span class="token comment"># 切换到 / 目录</span>
+<span class="token builtin class-name">cd</span> ~            <span class="token comment"># 切换到用户(home)目录</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>           <span class="token comment"># 切换到上一层目录树</span>
+</code></pre></div><blockquote><p>同样可使用 <code>cd --help</code> 查看其他用法</p></blockquote> <h3 id="pwd-命令"><a href="#pwd-命令" class="header-anchor">#</a> pwd 命令</h3> <p>查看当前工作目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">pwd</span>             <span class="token comment"># 查看当前工作目录</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">提示</p> <p>在以下操作中要经常使用 <code>ls</code> 命令查看对文件以及目录的操作，并且所有操作要在用户目录下进行操作。使用 <code>cd ~</code> 切换到用户目录。</p></div> <h3 id="mkdir-命令"><a href="#mkdir-命令" class="header-anchor">#</a> mkdir 命令</h3> <p><code>mkdir</code> 命令用来创建目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> name              <span class="token comment"># 在当前目录下创建一个名为 name 的目录</span>
+<span class="token function">mkdir</span> <span class="token punctuation">{</span>a，b<span class="token punctuation">}</span>             <span class="token comment"># 创建两个目录a和b</span>
+<span class="token function">mkdir</span> -p <span class="token punctuation">{</span>c/c1，d/d1<span class="token punctuation">}</span>    <span class="token comment"># 创建四个目录c以及c下的c1，目录d以及d下的d1</span>
+</code></pre></div><p>创建完可使用 <code>ls</code> 命令进行查看，</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>在 <code>Linux</code> 中文件以 <code>.</code> 开头默认为隐藏文件，必须用 <code>ls -a</code> 才可查看.</p></div> <h3 id="touch-命令"><a href="#touch-命令" class="header-anchor">#</a> touch 命令</h3> <p><code>touch</code> 用于创建文件</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">touch</span> filename          <span class="token comment"># 创建一个名为filename的文件</span>
+<span class="token function">touch</span> <span class="token punctuation">{</span>f1，f2<span class="token punctuation">}</span>           <span class="token comment"># 一次创建多个文件</span>
+</code></pre></div><h3 id="rm-命令"><a href="#rm-命令" class="header-anchor">#</a> rm 命令</h3> <p>删除命令</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">rm</span> -d a                 <span class="token comment"># 删除目录a</span>
+<span class="token function">rm</span> -rd c                <span class="token comment"># 递归删除 即删除c目录以及其目录下的所有文件</span>
+<span class="token function">rm</span> -f filename          <span class="token comment"># 删除文件filename</span>
+<span class="token function">rm</span> -r *                 <span class="token comment"># 删除当前目录下的所有目录及文件</span>
+</code></pre></div><div class="custom-block danger"><p class="custom-block-title">警告</p> <p>千万不要在 <code>root</code> 权限下执行 <code>rm -rf /</code> 命令，这样会删除掉整个系统.</p></div> <h3 id="cp-命令"><a href="#cp-命令" class="header-anchor">#</a> cp 命令</h3> <p>复制命令</p> <blockquote><p>不出意外地话刚才所建的所有文件及目录都在刚才学习<code>rm</code>的时候都给删除了，我们再重新建就好了.</p></blockquote> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 复制执行以下命令</span>
+<span class="token function">mkdir</span> -p <span class="token punctuation">{</span>a/a1，b/b1<span class="token punctuation">}</span> <span class="token operator">&amp;&amp;</span> <span class="token function">touch</span> <span class="token punctuation">{</span>a/a1/<span class="token punctuation">{</span>fa1，fa2，fa3<span class="token punctuation">}</span> <span class="token operator">&amp;&amp;</span> <span class="token function">touch</span> filename<span class="token punctuation">}</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> -f <span class="token function">cp</span> -f a/a1/fa1 b/b1/  <span class="token comment"># copy a/a1/fa1 文件到 b/b1/ 目录下</span>
+<span class="token function">cp</span> -r a b/                  <span class="token comment"># copy a 目录及以下所有文件到 b/ 目录下</span>
+</code></pre></div><h3 id="mv-命令"><a href="#mv-命令" class="header-anchor">#</a> mv 命令</h3> <p>移动和修改文件名称</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mv</span> a b/b1/                  <span class="token comment"># 移动 a 目录到 b/b1/ 目录下</span>
+<span class="token function">mv</span> b/b1/a <span class="token builtin class-name">.</span>                 <span class="token comment"># 再将 a 目录移动到当前目录下</span>
+<span class="token function">mv</span> a aa                     <span class="token comment"># 将目录 a 修改为 aa</span>
+<span class="token function">mv</span> filename name            <span class="token comment"># 将文件 filename 修改为 name</span>
+</code></pre></div><p>至此几乎关于文件和目录的常用操作就完成了，总就这几个命令</p> <ul><li><code>ls</code>    查看目录及文件</li> <li><code>cd</code>    切换工作目录</li> <li><code>pwd</code>   查看当前工作目录</li> <li><code>mkdir</code> 创建目录</li> <li><code>touch</code> 创建文件</li> <li><code>rm</code>    删除文件及目录</li> <li><code>cp</code>    复制文件及目录</li> <li><code>mv</code>    移动文件及目录或者修改文件及目录的名称</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/lily/linux/basic/install-wsl.html" class="prev">
+        安装 WSL 并升级为 WSL2
+      </a></span> <span class="next"><a href="/lily/linux/basic/03-remote.html">
+        使用 SSH 远程连接登录 Linux
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/lily/assets/js/app.0a322e39.js" defer></script><script src="/lily/assets/js/2.d557c063.js" defer></script><script src="/lily/assets/js/14.438719b3.js" defer></script>
+  </body>
+</html>
