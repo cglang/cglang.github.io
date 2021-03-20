@@ -1,5 +1,7 @@
 
 function SelectInit(id, value) {
+    document.getElementById(id).innerHTML = "";
+
     value.forEach(({ value, text }) => {
         var frameOption = document.createElement("option");
         frameOption.value = value;
@@ -11,12 +13,7 @@ function SelectInit(id, value) {
 function SelectInitByUrl(url, id) {
     request.get(url)
         .then(function (resData) {
-            resData.items.forEach(({ value, text }) => {
-                var frameOption = document.createElement("option");
-                frameOption.value = value;
-                frameOption.innerHTML = text;
-                document.getElementById(id).appendChild(frameOption);
-            });
+            SelectInit(id, resData.items);
         })
         .catch(function (error) {
             console.error(`下拉框Id:${id},请求赋值错误;`, error);
@@ -73,5 +70,5 @@ function ShowAlert(type, text) {
     ac.appendChild(alert);
     setTimeout(function () {
         ac.removeChild(alert);
-    }, 1500);
+    }, 2000);
 }
