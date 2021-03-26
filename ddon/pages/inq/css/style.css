@@ -1,3 +1,7 @@
+body {
+  background: url("../../../images/pages/lovq/inq_bg2.jpg");
+}
+
 .wrapper {
   padding-right: 15px;
   padding-left: 15px;
@@ -6,7 +10,6 @@
 }
 
 .coming-page-info-6 {
-  background: url("../../../images/pages/lovq/lovq_bg1.jpg") no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -55,7 +58,7 @@
   font-weight: 500;
 }
 
-.coming-page-info-6 .countdown>div {
+.coming-page-info-6 .countdown > div {
   float: left;
   min-width: 115px;
   margin: 40px 0;
@@ -65,13 +68,13 @@
   color: #fff;
 }
 
-.coming-page-info-6 .countdown>div:last-child {
+.coming-page-info-6 .countdown > div:last-child {
   border-right: none;
 }
 
 .coming-page-info-6 p {
   color: #fff;
-  opacity: 0.9;  
+  opacity: 0.9;
   text-transform: capitalize;
   font-size: 1.3rem;
   letter-spacing: 10px;
@@ -93,7 +96,7 @@
     line-height: 88px;
   }
 
-  .coming-page-info-6 .countdown>div {
+  .coming-page-info-6 .countdown > div {
     font-size: 2rem;
     min-width: 80px;
   }
