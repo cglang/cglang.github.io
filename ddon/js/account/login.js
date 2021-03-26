@@ -1,6 +1,6 @@
 
 var config = {
-    authority: "https://www.cglang.com:27",
+    authority: "https://localhost:44308",
     client_id: "Gardener_App",
     redirect_uri: document.location.origin + "/ddon/pages/oidc/callback.html",
     response_type: "code",

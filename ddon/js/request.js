@@ -1,4 +1,4 @@
-let host = "https://www.cglang.com:27"
+let host = "https://localhost:44308"
 
 // 创建 axios 实例
 const request = axios.create({
