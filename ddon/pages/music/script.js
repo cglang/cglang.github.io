@@ -71,7 +71,7 @@ new Vue({
     },
     async prevTrack() {
       if (this.currentTrackIndex > 0) {
-        this.transitionName = "scale-in";        
+        this.transitionName = "scale-in";
         this.isShowCover = false;
         this.currentTrackIndex--;
         this.currentTrack = this.tracks[this.currentTrackIndex];
@@ -85,9 +85,10 @@ new Vue({
         this.currentTrackIndex++;
 
         let id = this.musicIds[this.currentTrackIndex]
-        let music = await this.musicInit(id);
-        await this.addMusic(music);
-
+        if (this.currentTrackIndex + 1 != this.tracks.length) {
+          let music = await this.musicInit(id);
+          await this.addMusic(music);
+        }
         this.currentTrack = this.tracks[this.currentTrackIndex];
         this.resetPlayer();
       }
@@ -121,7 +122,7 @@ new Vue({
           // 歌曲url
           await axios.get('https://www.cglang.com:28/song/url?id=' + id)
             .then((res) => {
-              music.source = res.data.data[0].url.replace("http://","https://")
+              music.source = res.data.data[0].url.replace("http://", "https://")
             });
         });
       return music;
