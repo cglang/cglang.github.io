@@ -1,0 +1,17 @@
+[
+    {
+        "group": "工具",
+        "items": [
+            {
+                "name": "日记",
+                "url": "pages/diary/",
+                "ico": "fa-calendar"
+            },
+            {
+                "name": "记账",
+                "url": "pages/bookkeep/",
+                "ico": "fa-calculator"
+            }
+        ]
+    }
+]

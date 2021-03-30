@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <script src="config/config.js"></script>
+</head>
+
+<body class="hold-transition white-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <!-- <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
+    </div>
+
+    <nav class="main-header navbar navbar-expand navbar-write">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="javascript:;" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block"><a href="javascript:;" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="#" class="brand-link" style="text-align: center;">
+        <!-- <img src="dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+        我的工具集
+        <span class="brand-text font-weight-light"></span>
+      </a>
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
+          </div>
+          <div class="info"><a href="#/123/123" class="d-block">CGLang</a></div>
+        </div>
+
+        <!-- 左侧菜单 -->
+        <nav class="mt-2">
+          <ul id="sidebar" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+            data-accordion="false">
+            <li class="nav-item">
+              <a href="#" url="pages/dashboard" class="nav-link active" onclick="MenuClick(this)">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>仪表盘</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </aside>
+
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0" id="pageHeader">仪表盘</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主界面 -->
+      <section class="content">
+        <div class="container-fluid" id="app"></div>
+      </section>
+
+    </div>
+
+    <!-- <footer class="main-footer">
+      <strong>此页面改自<a href="https://github.com/ColorlibHQ/AdminLTE">AdminLTE</a></strong>
+      <div class="float-right d-none d-sm-inline-block">😀</div>
+    </footer> -->
+  </div>
+
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="dist/js/adminlte/adminlte.min.js"></script>
+
+  <script src="plugins/axios/axios.min.js"></script>
+  <script src="plugins/qs/qs.js"></script>
+  <script src="plugins/oidc/oidc-client.min.js"></script>
+  <script src="dist/js/request.js"></script>
+  <script src="dist/js/sidebarinit.js"></script>
+
+  <script src="dist/js/account/login.js"></script>
+  <script src="dist/js/common.js"></script>
+
+  <script>
+    $.get("./pages/dashboard/index.html", (html) => { $("#app").html(html) })
+
+    console.log(globalConfig);
+  </script>
+</body>
+
+</html>

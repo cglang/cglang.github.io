@@ -1,0 +1,113 @@
+<div>
+    <form id="formMain" class="padding-30" name="formMain">
+        <div class="mb-3">
+            <label class="form-label">收入或支出</label>
+            <select id="income-and-expenditure" name="incomeAndExpenditure" class="form-select form-select-mg"></select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">金额</label>
+            <input type="number" id="amount" name="amount" min="0" placeholder="0"
+                class="form-control quantity-count" />
+        </div>
+        <div class="mb-3">
+            <label id="incomeOrConsumeTitle" class="form-label"></label>
+            <select id="incomeOrConsume" class="form-select form-select-mg"></select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">备注</label>
+            <textarea id="exampleFormControlTextarea1" name="remark" class="form-control" rows="8"></textarea>
+        </div>
+        <button id="btnSave" type="button" class="btn btn-primary">保存</button>
+    </form>
+</div>
+
+<script>
+    var incomeType; // 收入类型
+    var consumeType;// 消费类型
+</script>
+
+<script>
+    // 消费类型/收入类型
+    // SelectInitByUrl("/app/bookkeep/income-type", "select");
+    SelectInitByUrl("/app/bookkeep/income-and-expenditure", "income-and-expenditure");
+</script>
+
+<script>
+    request.get("/app/bookkeep/income-type")
+        .then(function (resData) {
+            incomeType = resData.items;
+        })
+        .catch(function (error) {
+            console.error(`下拉框Id:${id},请求赋值错误;`, error);
+        });
+    request.get("/app/bookkeep/consume-type")
+        .then(function (resData) {
+            consumeType = resData.items;
+            SetIncomeOrConsume(10);
+        })
+        .catch(function (error) {
+            console.error(`下拉框Id:${id},请求赋值错误;`, error);
+        });
+</script>
+
+<script>
+    document.getElementById("income-and-expenditure").addEventListener("change", function (event) {
+        SetIncomeOrConsume(parseInt(event.target.value))
+    })
+
+    document.getElementById("btnSave").addEventListener("click", function () {
+        var seedData = GetSeedData("post", $('#formMain').serialize());
+        var v = Verify(seedData);
+        if (v.decide) {
+            request.post("/app/bookkeep", seedData)
+                .then(function (response) {
+                    ShowSuccess("保存成功");
+                    document.getElementById("amount").value = null;
+                })
+                .catch(function (error) {
+                    ShowWarning("保存失败", error);
+                });
+        } else {
+            ShowWarning(v.mess);
+        }
+    })
+</script>
+
+<script>
+    function Verify(data) {
+        let v = { decide: false, mess: null }
+        if (!data.amount) {
+            v.mess = "金额数值不正确"
+            return v;
+        }
+        v.decide = true;
+        return v;
+    }
+    function SetIncomeOrConsume(type) {
+        switch (type) {
+            case 10:
+                document.getElementById("incomeOrConsumeTitle").innerText = "消费类型";
+                document.getElementById("incomeOrConsume").name = "consumeType";
+                SelectInit("incomeOrConsume", consumeType);
+                break;
+            case 20:
+                document.getElementById("incomeOrConsumeTitle").innerText = "收入类型";
+                document.getElementById("incomeOrConsume").name = "incomeType";
+                SelectInit("incomeOrConsume", incomeType);
+                break;
+        }
+    }
+</script>
+
+<style>
+    /* 窗口至少为800像素时 */
+    @media screen and (min-width: 800px) {
+        .form-select {
+            width: 700px;
+        }
+
+        .form-control {
+            width: 700px;
+        }
+    }
+</style>
