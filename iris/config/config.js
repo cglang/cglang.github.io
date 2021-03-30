@@ -1,4 +1,4 @@
-var servicehost = document.location.hostname === "garden.localhost" ? "https://localhost:44308" : "https://www.cglang.com:29";
+var servicehost = document.location.hostname === "garden.localhost" ? "https://localhost:44308" : "https://www.cglang.com:27";
 
 var globalConfig = {
     baseURL: servicehost + "/api",
@@ -6,7 +6,7 @@ var globalConfig = {
     oidcConfig: {
         authority: servicehost,
         client_id: "Gardener_App",
-        redirect_uri: document.location.origin + "/ddon/pages/oidc/callback.html",
+        redirect_uri: document.location.origin + "/iris/pages/oidc/callback.html",
         response_type: "code",
         scope: "offline_access openid profile role email phone Gardener"
     }
