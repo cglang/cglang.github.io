@@ -1,4 +1,4 @@
-var servicehost = document.location.hostname === "localhost" ? "https://localhost:44308" : "https://www.cglang.com:29";
+var servicehost = document.location.hostname === "garden.localhost" ? "https://localhost:44308" : "https://www.cglang.com:29";
 
 var globalConfig = {
     baseURL: servicehost + "/api",
