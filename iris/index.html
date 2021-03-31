@@ -7,8 +7,8 @@
   <title>Home</title>
 
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/alt/adminlte.core.min.css">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
   <script src="config/config.js"></script>
 </head>
@@ -82,6 +82,9 @@
     </footer> -->
   </div>
 
+  <!-- 基础 确保什么都不依赖 -->
+  <script src="dist/js/garden.js"></script>
+
   <script src="plugins/jquery/jquery.min.js"></script>
   <script src="dist/js/adminlte/adminlte.min.js"></script>
 
@@ -94,8 +97,11 @@
   <script src="dist/js/account/login.js"></script>
   <script src="dist/js/common.js"></script>
 
+
   <script>
-    $.get("./pages/dashboard/index.html", (html) => { $("#app").html(html) })
+    AjaxGet("/iris/pages/dashboard/index.html", (html) => {
+      document.getElementById("app").innerHTML = html;
+    });
   </script>
 </body>
 
