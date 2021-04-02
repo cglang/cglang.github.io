@@ -46,19 +46,17 @@
         <nav class="mt-2">
           <ul id="sidebar" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
-            <li class="nav-item">
-              <a href="#" url="pages/dashboard" class="nav-link active" onclick="MenuClick(this)">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>仪表盘</p>
-              </a>
-            </li>
           </ul>
         </nav>
 
       </div>
     </aside>
 
+    <!-- 主界面 -->
     <div class="content-wrapper">
+      <section class="content" id="app"></section>
+    </div>
+    <!-- <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -69,12 +67,11 @@
         </div>
       </div>
 
-      <!-- 主界面 -->
       <section class="content">
         <div class="container-fluid" id="app"></div>
       </section>
 
-    </div>
+    </div> -->
 
     <!-- <footer class="main-footer">
       <strong>此页面改自<a href="https://github.com/ColorlibHQ/AdminLTE">AdminLTE</a></strong>
@@ -82,27 +79,18 @@
     </footer> -->
   </div>
 
-  <!-- 基础 确保什么都不依赖 -->
+  <script src="plugins/jquery/jquery.min.js"></script>
   <script src="dist/js/garden.js"></script>
 
-  <script src="plugins/jquery/jquery.min.js"></script>
   <script src="dist/js/adminlte/adminlte.min.js"></script>
 
   <script src="plugins/axios/axios.min.js"></script>
   <script src="plugins/qs/qs.js"></script>
   <script src="plugins/oidc/oidc-client.min.js"></script>
   <script src="dist/js/request.js"></script>
-  <script src="dist/js/sidebarinit.js"></script>
 
   <script src="dist/js/account/login.js"></script>
   <script src="dist/js/common.js"></script>
-
-
-  <script>
-    AjaxGet("/iris/pages/dashboard/index.html", (html) => {
-      document.getElementById("app").innerHTML = html;
-    });
-  </script>
 </body>
 
 </html>
